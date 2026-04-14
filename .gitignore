@@ -1,0 +1,8 @@
+# Entorno virtual
+entorno_issbc/
+
+# Secretos
+.env
+
+# Temporales
+__pycache__/
