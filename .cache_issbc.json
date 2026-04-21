@@ -1,0 +1,27 @@
+{
+    "https://github.com/nushell/nushell.git": {
+        "timestamp": 1776792059.966496,
+        "data": {
+            "dias_inactividad": 0,
+            "falta_docs": false,
+            "estrellas": 39101,
+            "issues_abiertas": 1483,
+            "forks": 2111,
+            "lenguaje": "Rust",
+            "prs_abiertas": 32,
+            "contribuyentes": 418,
+            "tiene_licencia": true,
+            "descripcion": "A new type of shell",
+            "rate_limit_info": "?/?",
+            "ultimos_commits": [
+                "2026-04-21: New `peek` command for inspecting streams without ",
+                "2026-04-20: update Rust toolchain to 1.93.1 + some deps (#1807",
+                "2026-04-20: Add `Command: Any` and `CustomValue: Any` (#18076)"
+            ],
+            "comentarios_recientes": [
+                "<!--\r\nThanks for contributing to Nushell!\r\n\r\nBefore submitting, please read the contributing guide:\r\nhttps://github.com/nushell/nushell/blob/main/CONTRIBUTING.md\r\n\r\nThis template helps reviewers under"
+            ],
+            "comentarios_toxicos": false
+        }
+    }
+}

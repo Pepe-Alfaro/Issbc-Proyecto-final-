@@ -3,3 +3,4 @@ requests
 PyGithub
 ollama
 python-dotenv
+PyPDF2
