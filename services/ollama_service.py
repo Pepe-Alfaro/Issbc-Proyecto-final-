@@ -1,5 +1,5 @@
 # services/ollama_service.py
-import ollama
+#import ollama
 
 class OllamaService:
     def analizar_con_ollama(self, texto):

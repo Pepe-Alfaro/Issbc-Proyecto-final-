@@ -23,18 +23,20 @@ class HipotesisDialog(QDialog):
     def init_ui(self, hipotesis_data):
         layout = QVBoxLayout(self)
         self.tabla = QTableWidget()
-        self.tabla.setColumnCount(3)
-        self.tabla.setHorizontalHeaderLabels(["Hipótesis", "Probabilidad", "Estado"])
-        self.tabla.horizontalHeader().setSectionResizeMode(0, QHeaderView.Stretch)
+        self.tabla.setColumnCount(5)
+        self.tabla.setHorizontalHeaderLabels(["Hipótesis", "Probabilidad", "Estado", "Evidencia Detectada", "Acción Recomendada"])
+        self.tabla.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
         self.tabla.setRowCount(len(hipotesis_data))
         
         font_tabla = QFont("Segoe UI", 11)
         self.tabla.setFont(font_tabla)
         
         for row, hip in enumerate(hipotesis_data):
-            self.tabla.setItem(row, 0, QTableWidgetItem(hip["nombre"]))
-            self.tabla.setItem(row, 1, QTableWidgetItem(hip["probabilidad"]))
-            self.tabla.setItem(row, 2, QTableWidgetItem(hip["estado"]))
+            self.tabla.setItem(row, 0, QTableWidgetItem(hip.get("nombre", "")))
+            self.tabla.setItem(row, 1, QTableWidgetItem(hip.get("probabilidad", "")))
+            self.tabla.setItem(row, 2, QTableWidgetItem(hip.get("estado", "")))
+            self.tabla.setItem(row, 3, QTableWidgetItem(hip.get("evidencia", "")))
+            self.tabla.setItem(row, 4, QTableWidgetItem(hip.get("accion", "")))
             
         layout.addWidget(self.tabla)
         btn_cerrar = QPushButton("Cerrar")
@@ -240,41 +242,41 @@ class MainWindow(QMainWindow):
         form_cuant = QFormLayout()
         
         # 1. Días de Inactividad
-        self.spin_dias = QSpinBox()
-        self.spin_dias.setRange(0, 99999)
-        self.spin_dias.setSuffix(" días")
-        self.spin_dias.setMinimumHeight(45)
+        self.lbl_val_dias = QLabel("-")
+        self.lbl_val_dias.setFont(QFont("Segoe UI", 15, QFont.Bold))
         lbl_inactividad = QLabel("⏳ Inactividad (commits):")
         lbl_inactividad.setFont(QFont("Segoe UI", 15))
-        form_cuant.addRow(lbl_inactividad, self.spin_dias)
+        form_cuant.addRow(lbl_inactividad, self.lbl_val_dias)
 
-        # 2. Issues Abiertas (NUEVO)
-        self.spin_issues = QSpinBox()
-        self.spin_issues.setRange(0, 999999)
-        self.spin_issues.setMinimumHeight(45)
+        # 2. Issues Abiertas
+        self.lbl_val_issues = QLabel("-")
+        self.lbl_val_issues.setFont(QFont("Segoe UI", 15, QFont.Bold))
         lbl_issues = QLabel("🐛 Issues Abiertas:")
         lbl_issues.setFont(QFont("Segoe UI", 15))
-        form_cuant.addRow(lbl_issues, self.spin_issues)
+        form_cuant.addRow(lbl_issues, self.lbl_val_issues)
 
-        # 3. Estrellas (NUEVO)
-        self.spin_estrellas = QSpinBox()
-        self.spin_estrellas.setRange(0, 999999)
-        self.spin_estrellas.setMinimumHeight(45)
+        # 3. Estrellas
+        self.lbl_val_estrellas = QLabel("-")
+        self.lbl_val_estrellas.setFont(QFont("Segoe UI", 15, QFont.Bold))
         lbl_estrellas = QLabel("⭐ Estrellas:")
         lbl_estrellas.setFont(QFont("Segoe UI", 15))
-        form_cuant.addRow(lbl_estrellas, self.spin_estrellas)
+        form_cuant.addRow(lbl_estrellas, self.lbl_val_estrellas)
         
-        self.chk_docs = QCheckBox("📚 Carencia grave de documentación")
-        self.chk_docs.setFont(QFont("Segoe UI", 15))
+        # 4. Documentación
+        self.lbl_val_docs = QLabel("-")
+        self.lbl_val_docs.setFont(QFont("Segoe UI", 15, QFont.Bold))
+        lbl_docs = QLabel("📚 Carencia grave docs:")
+        lbl_docs.setFont(QFont("Segoe UI", 15))
+        form_cuant.addRow(lbl_docs, self.lbl_val_docs)
         
-        self.chk_toxico = QCheckBox("⚠️ Alertas de toxicidad en comunidad")
-        self.chk_toxico.setFont(QFont("Segoe UI", 15))
+        # 5. Toxicidad
+        self.lbl_val_toxico = QLabel("-")
+        self.lbl_val_toxico.setFont(QFont("Segoe UI", 15, QFont.Bold))
+        lbl_toxico = QLabel("⚠️ Toxicidad en comunidad:")
+        lbl_toxico.setFont(QFont("Segoe UI", 15))
+        form_cuant.addRow(lbl_toxico, self.lbl_val_toxico)
         
         obs_layout.addLayout(form_cuant)
-        obs_layout.addSpacing(20)
-        obs_layout.addWidget(self.chk_docs)
-        obs_layout.addSpacing(15)
-        obs_layout.addWidget(self.chk_toxico)
         obs_layout.addStretch()
         
         panel_central.addWidget(group_obs, 1)
@@ -384,14 +386,10 @@ class MainWindow(QMainWindow):
                 self.lista_archivos.addItem(f"📄 {nombre_archivo}")
 
     def get_data(self):
-        # NOTA: Ahora también recogemos los datos de issues y estrellas
+        # NOTA: Solo recogemos la URL y el modo. Las métricas ahora son puramente informativas
+        # y se extraen exclusivamente mediante GitHubService en el controlador.
         return {
             "url_repo": self.txt_url.text(),
-            "falta_docs": self.chk_docs.isChecked(),
-            "comentarios_toxicos": self.chk_toxico.isChecked(),
-            "dias_sin_commits": self.spin_dias.value(),
-            "issues_abiertas": self.spin_issues.value(),
-            "estrellas": self.spin_estrellas.value(),
             "modo": self.combo_modo.currentText()
         }
 
@@ -419,10 +417,12 @@ class MainWindow(QMainWindow):
         """Si introducimos una URL, GitHub sobrescribe los datos. Esta función actualiza la UI para que el usuario los vea."""
         obs = self.controller.model.observables
         if "dias_sin_commits" in obs:
-            self.spin_dias.setValue(obs["dias_sin_commits"])
+            self.lbl_val_dias.setText(f"{obs['dias_sin_commits']} días")
         if "issues_abiertas" in obs:
-            self.spin_issues.setValue(obs["issues_abiertas"])
+            self.lbl_val_issues.setText(str(obs["issues_abiertas"]))
         if "estrellas" in obs:
-            self.spin_estrellas.setValue(obs["estrellas"])
+            self.lbl_val_estrellas.setText(str(obs["estrellas"]))
         if "falta_docs" in obs:
-            self.chk_docs.setChecked(obs["falta_docs"])
+            self.lbl_val_docs.setText("⚠️ Sí" if obs["falta_docs"] else "✅ No")
+        if "comentarios_toxicos" in obs:
+            self.lbl_val_toxico.setText("🚨 Sí" if obs["comentarios_toxicos"] else "✅ No")

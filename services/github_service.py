@@ -20,6 +20,8 @@ class GitHubService:
         try:
             # Limpiar la URL para obtener el formato 'usuario/repo'
             path = url_repo.replace("https://github.com/", "").strip("/")
+            if path.endswith(".git"):
+                path = path[:-4]
             repo = self.g.get_repo(path)
 
             # 1. Obtener días desde el último commit

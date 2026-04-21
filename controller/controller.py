@@ -19,50 +19,70 @@ class DiagnosticoController:
         if url:
             datos = self.github_service.extraer_datos_repo(url)
             if datos:
-                self.model.observables["dias_sin_commits"] = datos["dias_inactividad"]
-                self.model.observables["falta_docs"] = datos["falta_docs"]
-                self.model.observables["descripcion_repo"] = datos["descripcion"]
+                self.model.observables["dias_sin_commits"] = datos.get("dias_inactividad", 0)
+                self.model.observables["falta_docs"] = datos.get("falta_docs", False)
+                self.model.observables["descripcion_repo"] = datos.get("descripcion", "")
+                self.model.observables["estrellas"] = datos.get("estrellas", 0)
+                self.model.observables["issues_abiertas"] = datos.get("issues_abiertas", 0)
     
     def generar_hipotesis(self):
         self._actualizar_datos_externos()
     
         dias = self.model.observables.get("dias_sin_commits", 0)
         falta_docs = self.model.observables.get("falta_docs", False)
+        issues = self.model.observables.get("issues_abiertas", 0)
     
         # 📝 Definición de Hipótesis según metodología CommonKADS
         nuevas_hipotesis = []
 
-        # Hipótesis 1: Abandono Técnico
-        # Se confirma si hay inactividad prolongada Y falta de gestión de issues
+        # Abandono Crítico: Si dias_inactividad > 365.
         if dias > 365:
             nuevas_hipotesis.append({
-                "nombre": "Abandono Técnico (CommonKADS)", 
+                "nombre": "Abandono Crítico", 
                 "probabilidad": "Muy Alta", 
-                "estado": "Confirmada"
+                "estado": "Confirmada",
+                "evidencia": f"Inactividad severa ({dias} días sin commits)",
+                "accion": "Archivar proyecto o buscar nuevos mantenedores"
             })
-        elif dias > 180:
+
+        # Mantenimiento Deficiente: Si falta_docs es True Y issues_abiertas > 50.
+        if falta_docs and issues > 50:
             nuevas_hipotesis.append({
-                "nombre": "Mantenimiento Irregular", 
+                "nombre": "Mantenimiento Deficiente", 
+                "probabilidad": "Alta", 
+                "estado": "Sugerida",
+                "evidencia": f"Falta docs básica y exceso de issues ({issues})",
+                "accion": "Pausar desarrollo, exigir documentación y triaje"
+            })
+            
+        # Proyecto Saturado: Si issues_abiertas es muy alto comparado con la actividad reciente.
+        if issues > 100 and dias > 30:
+            nuevas_hipotesis.append({
+                "nombre": "Proyecto Saturado", 
                 "probabilidad": "Media", 
-                "estado": "Posible"
+                "estado": "Posible",
+                "evidencia": f"Alta carga de issues ({issues}) con inactividad ({dias} días)",
+                "accion": "Cerrar issues antiguas (Stale bot) y delegar"
             })
 
-        # Hipótesis 2: Barrera de Entrada para Colaboradores
-        # Se dispara si falta documentación técnica básica
-        if falta_docs:
+        # Hipótesis adicional si falta documentación pero no tiene tantas issues
+        if falta_docs and issues <= 50:
             nuevas_hipotesis.append({
-                "nombre": "Dificultad de Adopción", 
+                "nombre": "Déficit Informativo", 
                 "probabilidad": "Alta", 
-                "estado": "Sugerida"
+                "estado": "Sugerida",
+                "evidencia": "Ausencia de README o Wiki",
+                "accion": "Redactar guía de inicio rápido (Getting Started)"
             })
 
-    # Hipótesis 3: Riesgo de Continuidad
-    # Combinación de inactividad con otros factores (puedes añadir más métricas)
-        if dias > 90 and falta_docs:
+        # Si no hay síntomas negativos, generamos la hipótesis de que está sano
+        if not nuevas_hipotesis:
             nuevas_hipotesis.append({
-                "nombre": "Riesgo de Continuidad", 
-                "probabilidad": "Alta", 
-                "estado": "Crítico"
+                "nombre": "Proyecto Sano / Estable", 
+                "probabilidad": "Muy Alta", 
+                "estado": "Confirmada",
+                "evidencia": f"Actividad normal ({dias} días), {issues} issues, docs presentes",
+                "accion": "Continuar con el ciclo de desarrollo habitual"
             })
 
         self.model.hipotesis = nuevas_hipotesis
@@ -71,19 +91,35 @@ class DiagnosticoController:
         # 1. Pedimos a GitHub los datos actualizados
         self._actualizar_datos_externos()
 
-        # 2. Pedimos a Ollama que analice el texto (IA)
+        # 2. Veredicto Analítico (Juicio puro basado en datos numéricos)
+        dias = self.model.observables.get("dias_sin_commits", 0)
+        falta_docs = self.model.observables.get("falta_docs", False)
+        issues = self.model.observables.get("issues_abiertas", 0)
+        
+        veredicto_numerico = "REPOSITORIO ESTABLE"
+        justificacion_numerica = f"Actividad normal ({dias} días sin commits), {issues} issues abiertas."
+        
+        if dias > 365:
+            veredicto_numerico = "REPOSITORIO OBSOLETO / ABANDONO CRÍTICO"
+            justificacion_numerica = f"Abandono técnico severo (>1 año sin commits). {issues} issues abiertas."
+        elif falta_docs and issues > 50:
+            veredicto_numerico = "REPOSITORIO CON MANTENIMIENTO DEFICIENTE"
+            justificacion_numerica = f"Falta documentación básica y acumula excesivas issues ({issues})."
+        elif issues > 100 and dias > 30:
+            veredicto_numerico = "REPOSITORIO SATURADO"
+            justificacion_numerica = f"Alta acumulación de issues ({issues}) con inactividad reciente ({dias} días sin commits)."
+        elif dias > 180:
+            veredicto_numerico = "REPOSITORIO CON MANTENIMIENTO IRREGULAR"
+            justificacion_numerica = f"Inactividad prolongada ({dias} días sin commits)."
+
+        # 3. Pedimos a Ollama que analice el texto (IA)
         texto_repo = self.model.observables.get("descripcion_repo", "")
         analisis_ia = self.ollama_service.analizar_con_ollama(texto_repo)
 
-        # 3. Generamos veredicto combinado
-        dias = self.model.observables.get("dias_sin_commits", 0)
-        
+        # 4. Generamos veredicto combinado
         if self.model.observables.get("comentarios_toxicos"):
             self.model.diagnostico_final = "REPOSITORIO EN ESTADO CRÍTICO"
-            self.model.justificacion = f"🚨 Se detectó hostilidad explícita.\n\n📊 CommonKADS: {dias} días de inactividad.\n\n🧠 Análisis IA: {analisis_ia}"
-        elif dias > 365:
-            self.model.diagnostico_final = "REPOSITORIO OBSOLETO"
-            self.model.justificacion = f"📊 CommonKADS: Abandono técnico severo (>1 año sin commits).\n\n🧠 Análisis IA: {analisis_ia}"
+            self.model.justificacion = f"🚨 Se detectó hostilidad explícita.\n\n📊 CommonKADS: {justificacion_numerica}\n\n🧠 Análisis IA: {analisis_ia}"
         else:
-            self.model.diagnostico_final = "REPOSITORIO ESTABLE"
-            self.model.justificacion = f"📊 CommonKADS: Actividad normal ({dias} días sin commits). \n\n🧠 Análisis IA: {analisis_ia}"
+            self.model.diagnostico_final = veredicto_numerico
+            self.model.justificacion = f"📊 Análisis Cuantitativo: {justificacion_numerica}\n\n🧠 Análisis IA: {analisis_ia}"
