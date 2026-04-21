@@ -97,44 +97,36 @@ class MainWindow(QMainWindow):
         self.init_ui()
 
     def aplicar_tema(self):
-        # NOTA: Checkboxes rellenados de color vivo y botones con efecto de pulsado (:pressed)
         if self.tema_oscuro:
             style = """
                 QMainWindow { background-color: #0d1117; }
                 QWidget { background-color: #0d1117; color: #c9d1d9; font-family: 'Segoe UI', Arial, sans-serif; }
                 
-                /* Mejoras en los bordes de los grupos */
                 QGroupBox { font-size: 16px; font-weight: bold; color: #58a6ff; border: 2px solid #30363d; border-radius: 12px; margin-top: 25px; padding: 25px 15px 15px 15px; }
                 QGroupBox::title { subcontrol-origin: margin; left: 15px; padding: 0 8px; }
                 
-                /* Botones normales con efecto pulsado */
                 QPushButton { background-color: #21262d; color: #c9d1d9; border: 1px solid #30363d; border-radius: 8px; padding: 10px 15px; font-weight: bold; font-size: 14px; }
                 QPushButton:hover { background-color: #30363d; border-color: #8b949e; }
                 QPushButton:pressed { background-color: #161b22; border: 2px solid #58a6ff; }
                 
-                /* Botón Diagnóstico */
                 QPushButton#btn_accion { background-color: #238636; color: white; border: 2px solid #2ea043; border-radius: 10px; font-size: 16px; font-weight: bold; }
                 QPushButton#btn_accion:hover { background-color: #2ea043; }
                 QPushButton#btn_accion:pressed { background-color: #1c6b2a; border: 2px solid #ffffff; }
                 
-                /* Botón Hipótesis */
                 QPushButton#btn_accion_hip { background-color: #1f6feb; color: white; border: 2px solid #388bfd; border-radius: 10px; font-size: 16px; font-weight: bold; }
                 QPushButton#btn_accion_hip:hover { background-color: #388bfd; }
                 QPushButton#btn_accion_hip:pressed { background-color: #1158c7; border: 2px solid #ffffff; }
                 
-                /* Botón Peligro (Limpiar) */
                 QPushButton#btn_peligro { background-color: transparent; color: #ff7b72; border: 2px solid #ff7b72; border-radius: 8px; }
                 QPushButton#btn_peligro:hover { background-color: rgba(255, 123, 114, 0.15); }
                 QPushButton#btn_peligro:pressed { background-color: rgba(255, 123, 114, 0.3); border-color: #d73a49; }
                 
-                /* Cajas de texto y listas con bordes redondeados */
                 QLineEdit, QComboBox, QSpinBox { background-color: #161b22; color: #c9d1d9; border: 2px solid #30363d; padding: 10px; border-radius: 8px; font-size: 15px; }
                 QLineEdit:focus, QComboBox:focus, QSpinBox:focus { border: 2px solid #58a6ff; }
                 
                 QSpinBox::up-button { width: 35px; border-left: 2px solid #30363d; background-color: #21262d; border-top-right-radius: 6px; }
                 QSpinBox::down-button { width: 35px; border-left: 2px solid #30363d; background-color: #21262d; border-bottom-right-radius: 6px; }
                 
-                /* Checkboxes - AHORA SE RELLENAN DE COLOR */
                 QCheckBox { spacing: 12px; }
                 QCheckBox::indicator { width: 22px; height: 22px; border: 2px solid #8b949e; border-radius: 6px; background-color: transparent; }
                 QCheckBox::indicator:hover { border: 2px solid #58a6ff; }
@@ -149,38 +141,31 @@ class MainWindow(QMainWindow):
                 QMainWindow { background-color: #ffffff; }
                 QWidget { background-color: #ffffff; color: #24292e; font-family: 'Segoe UI', Arial, sans-serif; }
                 
-                /* Mejoras en los bordes de los grupos */
                 QGroupBox { font-size: 16px; font-weight: bold; color: #0366d6; border: 2px solid #e1e4e8; border-radius: 12px; margin-top: 25px; padding: 25px 15px 15px 15px; }
                 QGroupBox::title { subcontrol-origin: margin; left: 15px; padding: 0 8px; }
                 
-                /* Botones normales con efecto pulsado */
                 QPushButton { background-color: #fafbfc; color: #24292e; border: 1px solid #e1e4e8; border-radius: 8px; padding: 10px 15px; font-weight: bold; font-size: 14px; }
                 QPushButton:hover { background-color: #f3f4f6; border-color: #d1d5da; }
                 QPushButton:pressed { background-color: #e1e4e8; border: 2px solid #0366d6; }
                 
-                /* Botón Diagnóstico */
                 QPushButton#btn_accion { background-color: #2ea44f; color: white; border: 2px solid #34d058; border-radius: 10px; font-size: 16px; font-weight: bold; }
                 QPushButton#btn_accion:hover { background-color: #2c974b; }
                 QPushButton#btn_accion:pressed { background-color: #22863a; border: 2px solid #000000; }
                 
-                /* Botón Hipótesis */
                 QPushButton#btn_accion_hip { background-color: #0366d6; color: white; border: 2px solid #79b8ff; border-radius: 10px; font-size: 16px; font-weight: bold; }
                 QPushButton#btn_accion_hip:hover { background-color: #005cc5; }
                 QPushButton#btn_accion_hip:pressed { background-color: #004ea5; border: 2px solid #000000; }
                 
-                /* Botón Peligro (Limpiar) */
                 QPushButton#btn_peligro { background-color: transparent; color: #d73a49; border: 2px solid #d73a49; border-radius: 8px; }
                 QPushButton#btn_peligro:hover { background-color: rgba(215, 58, 73, 0.1); }
                 QPushButton#btn_peligro:pressed { background-color: rgba(215, 58, 73, 0.25); border-color: #cb2431; }
                 
-                /* Cajas de texto y listas con bordes redondeados */
                 QLineEdit, QComboBox, QSpinBox { background-color: #fafbfc; color: #24292e; border: 2px solid #e1e4e8; padding: 10px; border-radius: 8px; font-size: 15px; }
                 QLineEdit:focus, QComboBox:focus, QSpinBox:focus { border: 2px solid #0366d6; }
                 
                 QSpinBox::up-button { width: 35px; border-left: 2px solid #e1e4e8; background-color: #f6f8fa; border-top-right-radius: 6px; }
                 QSpinBox::down-button { width: 35px; border-left: 2px solid #e1e4e8; background-color: #f6f8fa; border-bottom-right-radius: 6px; }
                 
-                /* Checkboxes - AHORA SE RELLENAN DE COLOR */
                 QCheckBox { spacing: 12px; }
                 QCheckBox::indicator { width: 22px; height: 22px; border: 2px solid #959da5; border-radius: 6px; background-color: transparent; }
                 QCheckBox::indicator:hover { border: 2px solid #0366d6; }
@@ -206,7 +191,7 @@ class MainWindow(QMainWindow):
         self.setCentralWidget(container)
         
         main_layout = QVBoxLayout(container)
-        main_layout.setSpacing(25) # Más espacio para respirar entre componentes
+        main_layout.setSpacing(25)
         main_layout.setContentsMargins(30, 30, 30, 30)
 
         # --- CABECERA ---
@@ -248,19 +233,36 @@ class MainWindow(QMainWindow):
         panel_central = QHBoxLayout()
         panel_central.setSpacing(25)
         
-        # Columna Izquierda: Síntomas
+        # Columna Izquierda: Síntomas y Métricas
         group_obs = QGroupBox("📊 Métricas y Observables")
         obs_layout = QVBoxLayout(group_obs)
         
         form_cuant = QFormLayout()
+        
+        # 1. Días de Inactividad
         self.spin_dias = QSpinBox()
-        self.spin_dias.setRange(0, 9999)
+        self.spin_dias.setRange(0, 99999)
         self.spin_dias.setSuffix(" días")
         self.spin_dias.setMinimumHeight(45)
-        
         lbl_inactividad = QLabel("⏳ Inactividad (commits):")
         lbl_inactividad.setFont(QFont("Segoe UI", 15))
         form_cuant.addRow(lbl_inactividad, self.spin_dias)
+
+        # 2. Issues Abiertas (NUEVO)
+        self.spin_issues = QSpinBox()
+        self.spin_issues.setRange(0, 999999)
+        self.spin_issues.setMinimumHeight(45)
+        lbl_issues = QLabel("🐛 Issues Abiertas:")
+        lbl_issues.setFont(QFont("Segoe UI", 15))
+        form_cuant.addRow(lbl_issues, self.spin_issues)
+
+        # 3. Estrellas (NUEVO)
+        self.spin_estrellas = QSpinBox()
+        self.spin_estrellas.setRange(0, 999999)
+        self.spin_estrellas.setMinimumHeight(45)
+        lbl_estrellas = QLabel("⭐ Estrellas:")
+        lbl_estrellas.setFont(QFont("Segoe UI", 15))
+        form_cuant.addRow(lbl_estrellas, self.spin_estrellas)
         
         self.chk_docs = QCheckBox("📚 Carencia grave de documentación")
         self.chk_docs.setFont(QFont("Segoe UI", 15))
@@ -369,6 +371,8 @@ class MainWindow(QMainWindow):
             self.progress_bar.setVisible(False)
             self.btn_hip.setEnabled(True)
             self.btn_diag.setEnabled(True)
+            
+            # Tras la carga simulada, ejecutar la lógica real de controlador
             self.callback_post_carga()
 
     def importar_pdf(self):
@@ -380,22 +384,45 @@ class MainWindow(QMainWindow):
                 self.lista_archivos.addItem(f"📄 {nombre_archivo}")
 
     def get_data(self):
+        # NOTA: Ahora también recogemos los datos de issues y estrellas
         return {
             "url_repo": self.txt_url.text(),
             "falta_docs": self.chk_docs.isChecked(),
             "comentarios_toxicos": self.chk_toxico.isChecked(),
             "dias_sin_commits": self.spin_dias.value(),
+            "issues_abiertas": self.spin_issues.value(),
+            "estrellas": self.spin_estrellas.value(),
             "modo": self.combo_modo.currentText()
         }
 
     def mostrar_hipotesis(self):
         self.controller.update_model(self.get_data())
         self.controller.generar_hipotesis()
+        
+        # Opcional: Actualizar la vista visualmente con los datos extraídos por GitHub
+        self.actualizar_vista_desde_modelo()
+        
         dialog = HipotesisDialog(self.controller.model.hipotesis, self)
         dialog.exec_()
 
     def mostrar_diagnostico(self):
         self.controller.update_model(self.get_data())
         self.controller.generar_diagnostico()
+        
+        # Opcional: Actualizar la vista visualmente con los datos extraídos por GitHub
+        self.actualizar_vista_desde_modelo()
+        
         dialog = DiagnosticoDialog(self.controller.model.diagnostico_final, self.controller.model.justificacion, self)
         dialog.exec_()
+
+    def actualizar_vista_desde_modelo(self):
+        """Si introducimos una URL, GitHub sobrescribe los datos. Esta función actualiza la UI para que el usuario los vea."""
+        obs = self.controller.model.observables
+        if "dias_sin_commits" in obs:
+            self.spin_dias.setValue(obs["dias_sin_commits"])
+        if "issues_abiertas" in obs:
+            self.spin_issues.setValue(obs["issues_abiertas"])
+        if "estrellas" in obs:
+            self.spin_estrellas.setValue(obs["estrellas"])
+        if "falta_docs" in obs:
+            self.chk_docs.setChecked(obs["falta_docs"])
