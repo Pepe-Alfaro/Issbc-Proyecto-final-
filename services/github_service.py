@@ -11,12 +11,14 @@ class GitHubService:
     def __init__(self):
         # Leer el token de forma segura al inicializar el servicio
         self.token = os.getenv("GITHUB_TOKEN", "")
+        # Si hay token lo usa; si no, intenta conexión anónima (limitada)
         self.g = Github(self.token) if self.token else Github()
 
     def extraer_datos_repo(self, url_repo):
         """Extrae métricas reales usando PyGithub y devuelve un diccionario"""
         print(f"📡 Conectando a GitHub: {url_repo}...")
         try:
+            # Limpiar la URL para obtener el formato 'usuario/repo'
             path = url_repo.replace("https://github.com/", "").strip("/")
             repo = self.g.get_repo(path)
 
@@ -24,6 +26,7 @@ class GitHubService:
             ultimo_commit = repo.get_commits()[0]
             fecha_commit = ultimo_commit.commit.author.date
             
+            # Asegurar comparación con zona horaria UTC
             hoy = datetime.datetime.now(datetime.timezone.utc)
             dias_inactividad = (hoy - fecha_commit.replace(tzinfo=datetime.timezone.utc)).days
 
@@ -36,13 +39,19 @@ class GitHubService:
                 tiene_readme = False
             falta_docs = not (tiene_wiki or tiene_readme)
 
-            # 3. Extraer texto para la IA
+            # 3. Métricas adicionales para CommonKADS (Sugeridas)
+            estrellas = repo.stargazers_count
+            issues_abiertas = repo.open_issues_count
+
+            # 4. Extraer descripción para el análisis de IA (Ollama)
             descripcion = repo.description or "Repositorio sin descripción proporcionada."
 
             # Devolvemos los datos procesados al controlador
             return {
                 "dias_inactividad": dias_inactividad,
                 "falta_docs": falta_docs,
+                "estrellas": estrellas,
+                "issues_abiertas": issues_abiertas,
                 "descripcion": descripcion
             }
         except Exception as e:

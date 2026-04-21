@@ -22,19 +22,50 @@ class DiagnosticoController:
                 self.model.observables["dias_sin_commits"] = datos["dias_inactividad"]
                 self.model.observables["falta_docs"] = datos["falta_docs"]
                 self.model.observables["descripcion_repo"] = datos["descripcion"]
-
+    
     def generar_hipotesis(self):
-        # 1. Pedimos a GitHub los datos actualizados
         self._actualizar_datos_externos()
-
-        # 2. Evaluamos reglas (CommonKADS)
+    
         dias = self.model.observables.get("dias_sin_commits", 0)
-        
-        self.model.hipotesis = [
-            {"nombre": "Repo Obsoleto (CommonKADS)", "probabilidad": "Alta" if dias > 365 else "Baja", "estado": "Posible"},
-            {"nombre": "Falta de Docs (CommonKADS)", "probabilidad": "Alta" if self.model.observables.get("falta_docs") else "Baja", "estado": "Posible"},
-            {"nombre": "Comunidad Tóxica", "probabilidad": "Crítica" if self.model.observables.get("comentarios_toxicos") else "Baja", "estado": "Posible"}
-        ]
+        falta_docs = self.model.observables.get("falta_docs", False)
+    
+        # 📝 Definición de Hipótesis según metodología CommonKADS
+        nuevas_hipotesis = []
+
+        # Hipótesis 1: Abandono Técnico
+        # Se confirma si hay inactividad prolongada Y falta de gestión de issues
+        if dias > 365:
+            nuevas_hipotesis.append({
+                "nombre": "Abandono Técnico (CommonKADS)", 
+                "probabilidad": "Muy Alta", 
+                "estado": "Confirmada"
+            })
+        elif dias > 180:
+            nuevas_hipotesis.append({
+                "nombre": "Mantenimiento Irregular", 
+                "probabilidad": "Media", 
+                "estado": "Posible"
+            })
+
+        # Hipótesis 2: Barrera de Entrada para Colaboradores
+        # Se dispara si falta documentación técnica básica
+        if falta_docs:
+            nuevas_hipotesis.append({
+                "nombre": "Dificultad de Adopción", 
+                "probabilidad": "Alta", 
+                "estado": "Sugerida"
+            })
+
+    # Hipótesis 3: Riesgo de Continuidad
+    # Combinación de inactividad con otros factores (puedes añadir más métricas)
+        if dias > 90 and falta_docs:
+            nuevas_hipotesis.append({
+                "nombre": "Riesgo de Continuidad", 
+                "probabilidad": "Alta", 
+                "estado": "Crítico"
+            })
+
+        self.model.hipotesis = nuevas_hipotesis
 
     def generar_diagnostico(self):
         # 1. Pedimos a GitHub los datos actualizados
