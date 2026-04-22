@@ -16,6 +16,7 @@ class DiagnosticoController:
         self.model.observables.update(data)
         self.model.modo = data.get("modo", "Local")
         self.model.motor = data.get("motor", "📊 CommonKADS")
+        self.model.modelo_ollama = data.get("modelo_ollama", "phi3:mini")
 
     def _actualizar_datos_externos(self):
         """Función auxiliar para pedir los datos a GitHub si hay una URL"""
@@ -31,7 +32,8 @@ class DiagnosticoController:
                     # Análisis de Sentimiento Pesado solo se hace una vez y se cachea
                     comentarios = datos.get("comentarios_recientes", [])
                     if comentarios:
-                        nivel_toxicidad = self.ollama_service.analizar_sentimiento(comentarios)
+                        modelo = getattr(self.model, "modelo_ollama", "phi3:mini")
+                        nivel_toxicidad = self.ollama_service.analizar_sentimiento(comentarios, modelo)
                         datos["comentarios_toxicos"] = nivel_toxicidad > 6
                     else:
                         datos["comentarios_toxicos"] = False
@@ -50,7 +52,7 @@ class DiagnosticoController:
                 self.model.observables["contribuyentes"] = datos.get("contribuyentes", 1)
                 self.model.observables["tiene_licencia"] = datos.get("tiene_licencia", False)
                 self.model.observables["comentarios_toxicos"] = datos.get("comentarios_toxicos", False)
-                self.model.observables["rate_limit_info"] = datos.get("rate_limit_info", "?/?")
+                self.model.observables["rate_limit_info"] = self.github_service.get_rate_limit_info()
                 self.model.observables["ultimos_commits"] = datos.get("ultimos_commits", [])
 
     def _extraer_texto_pdfs(self):
@@ -77,104 +79,114 @@ class DiagnosticoController:
         contribuyentes = self.model.observables.get("contribuyentes", 1)
         tiene_licencia = self.model.observables.get("tiene_licencia", False)
     
-        # 📝 Definición de Hipótesis según metodología CommonKADS
+        # 📝 Definición de Hipótesis según metodología CommonKADS con porcentajes
         nuevas_hipotesis = []
 
-        # Abandono Crítico: Si dias_inactividad > 365.
-        if dias > 365:
-            nuevas_hipotesis.append({
-                "nombre": "Abandono Crítico", 
-                "probabilidad": "Muy Alta", 
-                "estado": "Confirmada",
-                "evidencia": f"Inactividad severa ({dias} días sin commits)",
-                "accion": "Archivar proyecto o buscar nuevos mantenedores"
-            })
+        # 1. Abandono Crítico
+        prob = min(100, int(dias / 3)) if dias > 0 else 0
+        nuevas_hipotesis.append({
+            "nombre": "Abandono Crítico", 
+            "probabilidad": f"{prob}%", 
+            "prob_num": prob,
+            "estado": "Confirmada" if prob > 80 else ("Sugerida" if prob > 40 else "Descartada"),
+            "evidencia": f"Inactividad de {dias} días",
+            "accion": "Archivar proyecto o buscar nuevos mantenedores"
+        })
 
-        # Mantenimiento Deficiente: Si falta_docs es True Y issues_abiertas > 50.
-        if falta_docs and issues > 50:
-            nuevas_hipotesis.append({
-                "nombre": "Mantenimiento Deficiente", 
-                "probabilidad": "Alta", 
-                "estado": "Sugerida",
-                "evidencia": f"Falta docs básica y exceso de issues ({issues})",
-                "accion": "Pausar desarrollo, exigir documentación y triaje"
-            })
-            
-        # Proyecto Saturado: Si issues_abiertas es muy alto comparado con la actividad reciente.
-        if issues > 100 and dias > 30:
-            nuevas_hipotesis.append({
-                "nombre": "Proyecto Saturado", 
-                "probabilidad": "Media", 
-                "estado": "Posible",
-                "evidencia": f"Alta carga de issues ({issues}) con inactividad ({dias} días)",
-                "accion": "Cerrar issues antiguas (Stale bot) y delegar"
-            })
+        # 2. Mantenimiento Deficiente
+        prob_mant = 0
+        if falta_docs: prob_mant += 30
+        prob_mant += min(70, issues)
+        nuevas_hipotesis.append({
+            "nombre": "Mantenimiento Deficiente", 
+            "probabilidad": f"{prob_mant}%", 
+            "prob_num": prob_mant,
+            "estado": "Confirmada" if prob_mant > 80 else ("Sugerida" if prob_mant > 40 else "Descartada"),
+            "evidencia": f"Docs: {'No' if falta_docs else 'Sí'}, Issues: {issues}",
+            "accion": "Pausar desarrollo, exigir documentación y triaje"
+        })
+        
+        # 3. Proyecto Saturado
+        prob_sat = min(100, int((issues / max(1, contribuyentes)) * 2 + min(30, dias)))
+        nuevas_hipotesis.append({
+            "nombre": "Proyecto Saturado", 
+            "probabilidad": f"{prob_sat}%", 
+            "prob_num": prob_sat,
+            "estado": "Confirmada" if prob_sat > 80 else ("Sugerida" if prob_sat > 40 else "Descartada"),
+            "evidencia": f"{issues} issues para {contribuyentes} devs con inactividad ({dias} días)",
+            "accion": "Cerrar issues antiguas (Stale bot) y delegar"
+        })
+        
+        # 4. Déficit Informativo
+        prob_def = 100 if falta_docs else 0
+        nuevas_hipotesis.append({
+            "nombre": "Déficit Informativo", 
+            "probabilidad": f"{prob_def}%", 
+            "prob_num": prob_def,
+            "estado": "Confirmada" if prob_def == 100 else "Descartada",
+            "evidencia": "Ausencia de README o Wiki" if falta_docs else "Documentación presente",
+            "accion": "Redactar guía de inicio rápido"
+        })
+        
+        # 5. Comunidad en Expansión
+        prob_exp = min(100, int((estrellas / 5) + (forks * 2)))
+        nuevas_hipotesis.append({
+            "nombre": "Comunidad en Expansión", 
+            "probabilidad": f"{prob_exp}%", 
+            "prob_num": prob_exp,
+            "estado": "Confirmada" if prob_exp > 80 else ("Sugerida" if prob_exp > 40 else "Descartada"),
+            "evidencia": f"{estrellas} estrellas, {forks} forks",
+            "accion": "Considerar donaciones/patrocinios"
+        })
+        
+        # 6. Cuello de Botella (Reviews)
+        prob_pr = min(100, int((prs * 5) + min(50, dias)))
+        nuevas_hipotesis.append({
+            "nombre": "Cuello de Botella (Reviews)", 
+            "probabilidad": f"{prob_pr}%", 
+            "prob_num": prob_pr,
+            "estado": "Confirmada" if prob_pr > 80 else ("Sugerida" if prob_pr > 40 else "Descartada"),
+            "evidencia": f"{prs} PRs abiertas, {dias} días inactividad",
+            "accion": "Asignar revisores o cerrar PRs obsoletas"
+        })
+        
+        # 7. Riesgo Legal
+        prob_leg = 100 if not tiene_licencia else 0
+        nuevas_hipotesis.append({
+            "nombre": "Riesgo Legal", 
+            "probabilidad": f"{prob_leg}%", 
+            "prob_num": prob_leg,
+            "estado": "Confirmada" if prob_leg == 100 else "Descartada",
+            "evidencia": "Falta licencia" if not tiene_licencia else "Licencia explícita encontrada",
+            "accion": "Añadir archivo LICENSE"
+        })
+        
+        # 8. Proyecto Frágil (Bus Factor)
+        prob_bus = 0
+        if contribuyentes <= 1:
+            prob_bus = min(100, 50 + estrellas)
+        nuevas_hipotesis.append({
+            "nombre": "Proyecto Frágil (Bus Factor)", 
+            "probabilidad": f"{prob_bus}%", 
+            "prob_num": prob_bus,
+            "estado": "Confirmada" if prob_bus > 80 else ("Sugerida" if prob_bus > 40 else "Descartada"),
+            "evidencia": f"1 contribuyente principal, {estrellas} estrellas",
+            "accion": "Delegar responsabilidades"
+        })
+        
+        # 9. Proyecto Sano / Estable
+        prob_sano = max(0, 100 - max(prob, prob_mant, prob_sat, prob_pr, prob_bus))
+        nuevas_hipotesis.append({
+            "nombre": "Proyecto Sano / Estable", 
+            "probabilidad": f"{prob_sano}%", 
+            "prob_num": prob_sano,
+            "estado": "Confirmada" if prob_sano > 80 else ("Sugerida" if prob_sano > 40 else "Descartada"),
+            "evidencia": f"Métricas estables. Actividad: {dias}d, Issues: {issues}",
+            "accion": "Continuar ciclo habitual"
+        })
 
-        # Hipótesis adicional si falta documentación pero no tiene tantas issues
-        if falta_docs and issues <= 50:
-            nuevas_hipotesis.append({
-                "nombre": "Déficit Informativo", 
-                "probabilidad": "Alta", 
-                "estado": "Sugerida",
-                "evidencia": "Ausencia de README o Wiki",
-                "accion": "Redactar guía de inicio rápido (Getting Started)"
-            })
-            
-        # --- NUEVAS HIPÓTESIS ---
-        if estrellas > 100 and forks > 30:
-            nuevas_hipotesis.append({
-                "nombre": "Comunidad en Expansión", 
-                "probabilidad": "Alta", 
-                "estado": "Confirmada",
-                "evidencia": f"Alta popularidad ({estrellas} estrellas, {forks} forks)",
-                "accion": "Mantener la buena gestión y considerar donaciones/patrocinios"
-            })
-            
-        if prs > 10 and dias > 15:
-            nuevas_hipotesis.append({
-                "nombre": "Cuello de Botella (Reviews)", 
-                "probabilidad": "Alta", 
-                "estado": "Sugerida",
-                "evidencia": f"{prs} PRs abiertas y sin actividad reciente",
-                "accion": "Asignar revisores o cerrar PRs obsoletas"
-            })
-            
-        if not tiene_licencia:
-            nuevas_hipotesis.append({
-                "nombre": "Riesgo Legal", 
-                "probabilidad": "Crítica", 
-                "estado": "Confirmada",
-                "evidencia": "El repositorio no tiene una licencia explícita",
-                "accion": "Añadir archivo LICENSE (ej. MIT, Apache 2.0)"
-            })
-            
-        if contribuyentes <= 1 and estrellas > 10:
-            nuevas_hipotesis.append({
-                "nombre": "Proyecto Frágil (Bus Factor)", 
-                "probabilidad": "Media", 
-                "estado": "Posible",
-                "evidencia": "Popular pero mantenido por una sola persona",
-                "accion": "Delegar responsabilidades y atraer core-contributors"
-            })
-            
-        if contribuyentes >= 5 and issues < 10:
-            nuevas_hipotesis.append({
-                "nombre": "Comunidad Eficiente", 
-                "probabilidad": "Alta", 
-                "estado": "Sugerida",
-                "evidencia": "Múltiples contribuyentes con baja tasa de issues",
-                "accion": "Continuar prácticas actuales"
-            })
-
-        # Si no hay síntomas negativos, generamos la hipótesis de que está sano
-        if not nuevas_hipotesis:
-            nuevas_hipotesis.append({
-                "nombre": "Proyecto Sano / Estable", 
-                "probabilidad": "Muy Alta", 
-                "estado": "Confirmada",
-                "evidencia": f"Actividad normal ({dias} días), {issues} issues, docs presentes",
-                "accion": "Continuar con el ciclo de desarrollo habitual"
-            })
+        # Ordenar de mayor a menor probabilidad
+        nuevas_hipotesis.sort(key=lambda x: x["prob_num"], reverse=True)
 
         self.model.hipotesis = nuevas_hipotesis
 
@@ -227,8 +239,9 @@ class DiagnosticoController:
             # 3. Pedimos a Ollama que analice el texto (IA)
             texto_repo = self.model.observables.get("descripcion_repo", "")
             contexto_pdfs = self._extraer_texto_pdfs()
+            modelo = getattr(self.model, "modelo_ollama", "phi3:mini")
             
-            analisis_ia = self.ollama_service.analizar_con_ollama(texto_repo, contexto_pdfs)
+            analisis_ia = self.ollama_service.analizar_con_ollama(texto_repo, contexto_pdfs, modelo)
 
             self.model.diagnostico_final = "DIAGNÓSTICO BASADO EN IA"
             self.model.justificacion = f"🧠 Análisis IA (Ollama):\n{analisis_ia}"

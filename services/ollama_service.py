@@ -1,9 +1,18 @@
 # services/ollama_service.py
-#import ollama
+import ollama
 import re
 
 class OllamaService:
-    def analizar_con_ollama(self, texto, contexto_pdfs=""):
+    def obtener_modelos_disponibles(self):
+        """Devuelve una lista de los nombres de modelos locales de Ollama"""
+        try:
+            modelos_raw = ollama.list()
+            return [m['model'] for m in modelos_raw.get('models', [])]
+        except Exception as e:
+            print(f"Error obteniendo modelos Ollama: {e}")
+            return []
+
+    def analizar_con_ollama(self, texto, contexto_pdfs="", modelo="phi3:mini"):
         """Usa Ollama para hacer un análisis cualitativo del texto"""
         prompt = f"""
         Actúa como un experto en diagnóstico de repositorios. 
@@ -18,14 +27,14 @@ class OllamaService:
         """
         print("🤖 Consultando a Ollama...")
         try:
-            respuesta = ollama.chat(model='llama3', messages=[
+            respuesta = ollama.chat(model=modelo, messages=[
                 {'role': 'user', 'content': prompt}
             ])
             return respuesta['message']['content']
         except Exception as e:
             return f"Error conectando con la IA local: {e}"
 
-    def analizar_sentimiento(self, comentarios):
+    def analizar_sentimiento(self, comentarios, modelo="phi3:mini"):
         """Evalúa el nivel de toxicidad de los comentarios del 1 al 10"""
         if not comentarios:
             return 1 
@@ -40,7 +49,7 @@ class OllamaService:
         {comentarios_str[:2000]}
         """
         try:
-            respuesta = ollama.chat(model='llama3', messages=[
+            respuesta = ollama.chat(model=modelo, messages=[
                 {'role': 'user', 'content': prompt}
             ])
             texto_num = respuesta['message']['content'].strip()

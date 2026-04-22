@@ -70,7 +70,7 @@ class GitHubService:
 
             # 6. Rate Limit
             try:
-                rate_limit = self.g.get_rate_limit().core
+                rate_limit = self.g.get_rate_limit().rate
                 rate_limit_info = f"{rate_limit.remaining}/{rate_limit.limit}"
             except:
                 rate_limit_info = "?/?"
@@ -116,3 +116,11 @@ class GitHubService:
         except Exception as e:
             print(f"❌ Error de conexión con GitHub: {e}")
             return None
+
+    def get_rate_limit_info(self):
+        """Consulta directamente el límite actual de la API"""
+        try:
+            rate_limit = self.g.get_rate_limit().rate
+            return f"{rate_limit.remaining}/{rate_limit.limit}"
+        except:
+            return "?/?"

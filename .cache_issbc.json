@@ -1,25 +1,77 @@
 {
     "https://github.com/nushell/nushell.git": {
-        "timestamp": 1776792059.966496,
+        "timestamp": 1776857736.246716,
         "data": {
             "dias_inactividad": 0,
             "falta_docs": false,
-            "estrellas": 39101,
-            "issues_abiertas": 1483,
-            "forks": 2111,
+            "estrellas": 39124,
+            "issues_abiertas": 1482,
+            "forks": 2113,
             "lenguaje": "Rust",
-            "prs_abiertas": 32,
+            "prs_abiertas": 31,
             "contribuyentes": 418,
             "tiene_licencia": true,
             "descripcion": "A new type of shell",
             "rate_limit_info": "?/?",
             "ultimos_commits": [
-                "2026-04-21: New `peek` command for inspecting streams without ",
-                "2026-04-20: update Rust toolchain to 1.93.1 + some deps (#1807",
-                "2026-04-20: Add `Command: Any` and `CustomValue: Any` (#18076)"
+                "2026-04-22: build(deps): bump similar from 3.0.0 to 3.1.0 (#18",
+                "2026-04-22: build(deps): bump rmcp from 1.3.0 to 1.5.0 (#18086",
+                "2026-04-22: `metadata access` can modify `$env` (#18085)"
             ],
             "comentarios_recientes": [
-                "<!--\r\nThanks for contributing to Nushell!\r\n\r\nBefore submitting, please read the contributing guide:\r\nhttps://github.com/nushell/nushell/blob/main/CONTRIBUTING.md\r\n\r\nThis template helps reviewers under"
+                "### Bug report form\n\n- [x] I have done a basic search of the issue tracker to find any existing issues that are similar.\n- [x] I have checked that my version is at least the latest stable release avai"
+            ],
+            "comentarios_toxicos": false
+        }
+    },
+    "https://github.com/nushell/nushell": {
+        "timestamp": 1776857534.0698068,
+        "data": {
+            "dias_inactividad": 0,
+            "falta_docs": false,
+            "estrellas": 39124,
+            "issues_abiertas": 1482,
+            "forks": 2113,
+            "lenguaje": "Rust",
+            "prs_abiertas": 31,
+            "contribuyentes": 418,
+            "tiene_licencia": true,
+            "descripcion": "A new type of shell",
+            "rate_limit_info": "?/?",
+            "ultimos_commits": [
+                "2026-04-22: build(deps): bump similar from 3.0.0 to 3.1.0 (#18",
+                "2026-04-22: build(deps): bump rmcp from 1.3.0 to 1.5.0 (#18086",
+                "2026-04-22: `metadata access` can modify `$env` (#18085)"
+            ],
+            "comentarios_recientes": [
+                "### Bug report form\n\n- [x] I have done a basic search of the issue tracker to find any existing issues that are similar.\n- [x] I have checked that my version is at least the latest stable release avai"
+            ],
+            "comentarios_toxicos": false
+        }
+    },
+    "https://github.com/nushell/awesome-nu": {
+        "timestamp": 1776858631.782256,
+        "data": {
+            "dias_inactividad": 0,
+            "falta_docs": false,
+            "estrellas": 1330,
+            "issues_abiertas": 2,
+            "forks": 81,
+            "lenguaje": "Nushell",
+            "prs_abiertas": 1,
+            "contribuyentes": 75,
+            "tiene_licencia": true,
+            "descripcion": "A curated list of awesome tools that work within the nu language ecosystem e.g. nushell, scripts, nana, etc.",
+            "rate_limit_info": "4994/5000",
+            "ultimos_commits": [
+                "2026-04-22: Commit from GitHub Actions (Update plugin_details.",
+                "2026-04-15: Commit from GitHub Actions (Update plugin_details.",
+                "2026-04-08: Commit from GitHub Actions (Update plugin_details."
+            ],
+            "comentarios_recientes": [
+                "### nu_plugin_audio\r\n\r\nAdds `nu_plugin_audio` to the plugins list and `plugin_details.md`.\r\n\r\nThis started as a fork of `nu_plugin_audio_hook`; fmotalleb was archiving the repo and granted explicit pe",
+                "Sorry for all the hassle. Thanks!",
+                "Adds two script entries to the Scripts section:\r\n\r\n- [nu_script_time_sync](https://github.com/SuaveIV/nu_script_time_sync): Check if your system clock is drifting using the Time.now API.\r\n- [nu_script"
             ],
             "comentarios_toxicos": false
         }
