@@ -34,9 +34,11 @@ class GitHubService:
 
             # 2. Comprobar documentación (Wiki o README)
             tiene_wiki = repo.has_wiki
+            readme_content = ""
             try:
-                repo.get_readme()
+                readme = repo.get_readme()
                 tiene_readme = True
+                readme_content = readme.decoded_content.decode('utf-8', errors='ignore')
             except:
                 tiene_readme = False
             falta_docs = not (tiene_wiki or tiene_readme)
@@ -111,7 +113,8 @@ class GitHubService:
                 "descripcion": descripcion,
                 "rate_limit_info": rate_limit_info,
                 "ultimos_commits": ultimos_commits,
-                "comentarios_recientes": comentarios_recientes
+                "comentarios_recientes": comentarios_recientes,
+                "readme_content": readme_content
             }
         except Exception as e:
             print(f"❌ Error de conexión con GitHub: {e}")

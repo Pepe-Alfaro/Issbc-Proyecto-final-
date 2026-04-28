@@ -2,6 +2,7 @@
 from services.github_service import GitHubService
 from services.ollama_service import OllamaService
 from services.cache_service import CacheService
+from services.web_search_service import WebSearchService
 import PyPDF2
 
 class DiagnosticoController:
@@ -11,6 +12,7 @@ class DiagnosticoController:
         self.github_service = GitHubService()
         self.ollama_service = OllamaService()
         self.cache_service = CacheService()
+        self.web_search_service = WebSearchService()
 
     def update_model(self, data):
         self.model.observables.update(data)
@@ -54,6 +56,7 @@ class DiagnosticoController:
                 self.model.observables["comentarios_toxicos"] = datos.get("comentarios_toxicos", False)
                 self.model.observables["rate_limit_info"] = self.github_service.get_rate_limit_info()
                 self.model.observables["ultimos_commits"] = datos.get("ultimos_commits", [])
+                self.model.observables["readme_content"] = datos.get("readme_content", "")
 
     def _extraer_texto_pdfs(self):
         texto_completo = ""
@@ -239,6 +242,23 @@ class DiagnosticoController:
             # 3. Pedimos a Ollama que analice el texto (IA)
             texto_repo = self.model.observables.get("descripcion_repo", "")
             contexto_pdfs = self._extraer_texto_pdfs()
+            
+            # NUEVO: Si estamos en modo "Local + Web", añadimos contexto extra de internet
+            if "Web" in self.model.modo:
+                print("🌐 Modo 'Local + Web' activo. Recopilando contexto web...")
+                
+                # a) Añadimos el README (que es contexto web directo del repo)
+                readme = self.model.observables.get("readme_content", "")
+                if readme:
+                    contexto_pdfs += f"\n\n--- CONTEXTO WEB (README) ---\n{readme[:1500]}"
+                
+                # b) Hacemos una búsqueda web en base a la URL o descripción
+                url_repo = self.model.observables.get("url_repo", "")
+                if url_repo:
+                    nombre_repo = url_repo.split("/")[-1]
+                    info_web = self.web_search_service.buscar_info_web(f"github {nombre_repo} repository")
+                    contexto_pdfs += f"\n\n--- CONTEXTO WEB (BÚSQUEDA) ---\nResultados de búsqueda sobre '{nombre_repo}':\n{info_web}"
+            
             modelo = getattr(self.model, "modelo_ollama", "phi3:mini")
             
             analisis_ia = self.ollama_service.analizar_con_ollama(texto_repo, contexto_pdfs, modelo)
