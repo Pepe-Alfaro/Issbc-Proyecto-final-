@@ -75,5 +75,41 @@
             ],
             "comentarios_toxicos": false
         }
+    },
+    "https://github.com/CesiumGS/cesium": {
+        "timestamp": 1777364834.816689,
+        "data": {
+            "dias_inactividad": 0,
+            "falta_docs": false,
+            "estrellas": 15207,
+            "issues_abiertas": 1592,
+            "forks": 3788,
+            "lenguaje": "JavaScript",
+            "prs_abiertas": 74,
+            "contribuyentes": 310,
+            "tiene_licencia": true,
+            "descripcion": "An open-source JavaScript library for world-class 3D globes and maps :earth_americas:",
+            "rate_limit_info": "4994/5000",
+            "ultimos_commits": [
+                "2026-04-27: Merge pull request #13432 from CesiumGS/donmccurdy",
+                "2026-04-27: Vector Tiles: Fix Feature implementation if no bat",
+                "2026-04-27: Merge branch 'main' into donmccurdy/fix/vector-til"
+            ],
+            "comentarios_recientes": [
+                "<!--\r\nThanks for the Pull Request!\r\n\r\nPlease review [Contribution Guide](https://github.com/CesiumGS/cesium/blob/main/CONTRIBUTING.md) before opening your first Pull Request.\r\n\r\nTo ensure your Pull Re",
+                "Thank you for the pull request, @danielzhong! \n\n:white_check_mark: We can confirm we have a CLA on file for you.\n",
+                "> Still WIP! I will update when this is ready for review!\r\n\r\nThanks Daniel! Removing myself from the reviewer list until then. 👍🏻 \r\n\r\nI would just note that MVT is not part of the 3D Tiles standard an",
+                "# Description\r\n\r\n=== DO NOT MERGE ===\r\nPreceded by #13397\r\n\r\nIntroduces a half-edge mesh data structure for a CPU-side mesh editing representation. This data structure strikes a good balance between m",
+                "Thank you for the pull request, @mzschwartz5! \n\n:white_check_mark: We can confirm we have a CLA on file for you.\n",
+                "# Description\r\n\r\n=== DO NOT MERGE ===\r\nFollowed #13400\r\n\r\nAdds a new npm package, 'edit', for upcoming mesh editor capabilities. \r\n\r\n## Issue number and link\r\n\r\n#13398\r\n\r\n## Testing plan\r\n\r\nMake sure ",
+                "Thank you for the pull request, @mzschwartz5! \n\n:white_check_mark: We can confirm we have a CLA on file for you.\n",
+                "## Summary\r\n\r\nExtracts scene-graph traversal, instance transform computation, and GPU buffer readback logic from `pickModel.js` into reusable static methods on `ModelReader`, then rewrites `pickModel`",
+                "Thank you for the pull request, @alarkbentley! \n\n:white_check_mark: We can confirm we have a CLA on file for you.\n",
+                "@mzschwartz5 @javagl Any chance we get get this merged before the 1.141 cut-off? (which I assume is this week)",
+                "Sandcastle does not show which example is currently open anywhere in the UI.",
+                "This was also mentioned in https://github.com/CesiumGS/cesium/issues/12857#issuecomment-4161139337 \nA different sandcastle, but still. \n(One could close this as a duplicate, or consider it as \"trackin"
+            ],
+            "comentarios_toxicos": false
+        }
     }
 }
