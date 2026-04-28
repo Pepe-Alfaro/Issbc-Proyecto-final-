@@ -203,7 +203,7 @@ class MainWindow(QMainWindow):
                 border: 1px dashed #27272a;
                 border-radius: 6px;
                 padding: 10px;
-                font-size: 12px;
+                font-size: 14px;
                 font-style: italic;
                 color: #71717a;
             }
@@ -350,16 +350,16 @@ class MainWindow(QMainWindow):
         
         hdr_metrics = QHBoxLayout()
         lbl_metrics = QLabel("📊 Métricas y Observables")
-        lbl_metrics.setFont(QFont("Segoe UI", 13, QFont.Bold))
+        lbl_metrics.setFont(QFont("Segoe UI", 16, QFont.Bold))
         lbl_metrics.setStyleSheet("color: #e4e4e7;")
         hdr_metrics.addWidget(lbl_metrics)
         hdr_metrics.addStretch()
         obs_layout.addLayout(hdr_metrics)
         
-        obs_layout.addSpacing(15)
+        obs_layout.addSpacing(20)
         
         form_cuant = QFormLayout()
-        form_cuant.setSpacing(15)
+        form_cuant.setSpacing(20)
         
         self.metric_labels = {}
         metrics_def = [
@@ -377,27 +377,26 @@ class MainWindow(QMainWindow):
         
         for key, title in metrics_def:
             lbl_t = QLabel(title)
-            lbl_t.setFont(QFont("Segoe UI", 12))
+            lbl_t.setFont(QFont("Segoe UI", 14))
             lbl_t.setStyleSheet("color: #a1a1aa;")
             
             lbl_v = QLabel("-")
-            lbl_v.setFont(QFont("Segoe UI", 13, QFont.Bold))
+            lbl_v.setFont(QFont("Segoe UI", 16, QFont.Bold))
             lbl_v.setStyleSheet("color: #ffffff;")
             
             form_cuant.addRow(lbl_t, lbl_v)
             self.metric_labels[key] = lbl_v
 
         obs_layout.addLayout(form_cuant)
-        obs_layout.addStretch()
         
         lbl_commits = QLabel("🕒 Últimos Commits")
-        lbl_commits.setFont(QFont("Segoe UI", 11))
+        lbl_commits.setFont(QFont("Segoe UI", 14))
         lbl_commits.setStyleSheet("color: #a1a1aa;")
         obs_layout.addWidget(lbl_commits)
         
         self.lista_commits = QListWidget()
         self.lista_commits.setObjectName("commitsList")
-        self.lista_commits.setFixedHeight(100)
+        self.lista_commits.setMinimumHeight(150)
         self.lista_commits.addItem("Esperando análisis...")
         obs_layout.addWidget(self.lista_commits)
         
