@@ -111,5 +111,30 @@
             ],
             "comentarios_toxicos": false
         }
+    },
+    "https://github.com/cloudflare/cloudflare-docs": {
+        "timestamp": 1777370017.31412,
+        "data": {
+            "dias_inactividad": 0,
+            "falta_docs": false,
+            "estrellas": 4666,
+            "issues_abiertas": 247,
+            "forks": 13942,
+            "lenguaje": "MDX",
+            "prs_abiertas": 148,
+            "contribuyentes": 444,
+            "tiene_licencia": true,
+            "descripcion": "Cloudflare’s documentation",
+            "rate_limit_info": "4996/5000",
+            "ultimos_commits": [
+                "2026-04-28: Document CLOUDFLARE_CF_FETCH_ENABLED and CLOUDFLAR",
+                "2026-04-28: docs(wrangler/deprecations): 'wrangler deploy' -> ",
+                "2026-04-28: [Keyless SSL] Update supported OSs, repo URL, and "
+            ],
+            "comentarios_recientes": [
+                "Specify that Custom Hostname CA selection for enterprise customers only\r\nPCX-21137\r\n"
+            ],
+            "comentarios_toxicos": false
+        }
     }
 }
