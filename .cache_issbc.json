@@ -1,140 +1,142 @@
 {
-    "https://github.com/nushell/nushell.git": {
-        "timestamp": 1776857736.246716,
+    "https://github.com/expressjs/express": {
+        "timestamp": 1778152978.0283964,
         "data": {
-            "dias_inactividad": 0,
+            "dias_inactividad": 3,
             "falta_docs": false,
-            "estrellas": 39124,
-            "issues_abiertas": 1482,
-            "forks": 2113,
-            "lenguaje": "Rust",
-            "prs_abiertas": 31,
-            "contribuyentes": 418,
-            "tiene_licencia": true,
-            "descripcion": "A new type of shell",
-            "rate_limit_info": "?/?",
-            "ultimos_commits": [
-                "2026-04-22: build(deps): bump similar from 3.0.0 to 3.1.0 (#18",
-                "2026-04-22: build(deps): bump rmcp from 1.3.0 to 1.5.0 (#18086",
-                "2026-04-22: `metadata access` can modify `$env` (#18085)"
-            ],
-            "comentarios_recientes": [
-                "### Bug report form\n\n- [x] I have done a basic search of the issue tracker to find any existing issues that are similar.\n- [x] I have checked that my version is at least the latest stable release avai"
-            ],
-            "comentarios_toxicos": false
-        }
-    },
-    "https://github.com/nushell/nushell": {
-        "timestamp": 1776857534.0698068,
-        "data": {
-            "dias_inactividad": 0,
-            "falta_docs": false,
-            "estrellas": 39124,
-            "issues_abiertas": 1482,
-            "forks": 2113,
-            "lenguaje": "Rust",
-            "prs_abiertas": 31,
-            "contribuyentes": 418,
-            "tiene_licencia": true,
-            "descripcion": "A new type of shell",
-            "rate_limit_info": "?/?",
-            "ultimos_commits": [
-                "2026-04-22: build(deps): bump similar from 3.0.0 to 3.1.0 (#18",
-                "2026-04-22: build(deps): bump rmcp from 1.3.0 to 1.5.0 (#18086",
-                "2026-04-22: `metadata access` can modify `$env` (#18085)"
-            ],
-            "comentarios_recientes": [
-                "### Bug report form\n\n- [x] I have done a basic search of the issue tracker to find any existing issues that are similar.\n- [x] I have checked that my version is at least the latest stable release avai"
-            ],
-            "comentarios_toxicos": false
-        }
-    },
-    "https://github.com/nushell/awesome-nu": {
-        "timestamp": 1776858631.782256,
-        "data": {
-            "dias_inactividad": 0,
-            "falta_docs": false,
-            "estrellas": 1330,
-            "issues_abiertas": 2,
-            "forks": 81,
-            "lenguaje": "Nushell",
-            "prs_abiertas": 1,
-            "contribuyentes": 75,
-            "tiene_licencia": true,
-            "descripcion": "A curated list of awesome tools that work within the nu language ecosystem e.g. nushell, scripts, nana, etc.",
-            "rate_limit_info": "4994/5000",
-            "ultimos_commits": [
-                "2026-04-22: Commit from GitHub Actions (Update plugin_details.",
-                "2026-04-15: Commit from GitHub Actions (Update plugin_details.",
-                "2026-04-08: Commit from GitHub Actions (Update plugin_details."
-            ],
-            "comentarios_recientes": [
-                "### nu_plugin_audio\r\n\r\nAdds `nu_plugin_audio` to the plugins list and `plugin_details.md`.\r\n\r\nThis started as a fork of `nu_plugin_audio_hook`; fmotalleb was archiving the repo and granted explicit pe",
-                "Sorry for all the hassle. Thanks!",
-                "Adds two script entries to the Scripts section:\r\n\r\n- [nu_script_time_sync](https://github.com/SuaveIV/nu_script_time_sync): Check if your system clock is drifting using the Time.now API.\r\n- [nu_script"
-            ],
-            "comentarios_toxicos": false
-        }
-    },
-    "https://github.com/CesiumGS/cesium": {
-        "timestamp": 1777364834.816689,
-        "data": {
-            "dias_inactividad": 0,
-            "falta_docs": false,
-            "estrellas": 15207,
-            "issues_abiertas": 1592,
-            "forks": 3788,
+            "estrellas": 68990,
+            "issues_abiertas": 209,
+            "forks": 23254,
             "lenguaje": "JavaScript",
-            "prs_abiertas": 74,
-            "contribuyentes": 310,
+            "prs_abiertas": 106,
+            "pr_avg_age_days": 47.0,
+            "pr_old_ratio": 0.0,
+            "contribuyentes": 324,
             "tiene_licencia": true,
-            "descripcion": "An open-source JavaScript library for world-class 3D globes and maps :earth_americas:",
-            "rate_limit_info": "4994/5000",
+            "descripcion": "Fast, unopinionated, minimalist web framework for node.",
+            "rate_limit_info": "4992/5000",
             "ultimos_commits": [
-                "2026-04-27: Merge pull request #13432 from CesiumGS/donmccurdy",
-                "2026-04-27: Vector Tiles: Fix Feature implementation if no bat",
-                "2026-04-27: Merge branch 'main' into donmccurdy/fix/vector-til"
+                "2026-05-04: fixed typo in history.md (#7191)",
+                "2026-04-23: build(deps): bump github/codeql-action from 4.32.4",
+                "2026-04-23: build(deps): bump actions/setup-node from 6.2.0 to"
             ],
             "comentarios_recientes": [
-                "<!--\r\nThanks for the Pull Request!\r\n\r\nPlease review [Contribution Guide](https://github.com/CesiumGS/cesium/blob/main/CONTRIBUTING.md) before opening your first Pull Request.\r\n\r\nTo ensure your Pull Re",
-                "Thank you for the pull request, @danielzhong! \n\n:white_check_mark: We can confirm we have a CLA on file for you.\n",
-                "> Still WIP! I will update when this is ready for review!\r\n\r\nThanks Daniel! Removing myself from the reviewer list until then. 👍🏻 \r\n\r\nI would just note that MVT is not part of the 3D Tiles standard an",
-                "# Description\r\n\r\n=== DO NOT MERGE ===\r\nPreceded by #13397\r\n\r\nIntroduces a half-edge mesh data structure for a CPU-side mesh editing representation. This data structure strikes a good balance between m",
-                "Thank you for the pull request, @mzschwartz5! \n\n:white_check_mark: We can confirm we have a CLA on file for you.\n",
-                "# Description\r\n\r\n=== DO NOT MERGE ===\r\nFollowed #13400\r\n\r\nAdds a new npm package, 'edit', for upcoming mesh editor capabilities. \r\n\r\n## Issue number and link\r\n\r\n#13398\r\n\r\n## Testing plan\r\n\r\nMake sure ",
-                "Thank you for the pull request, @mzschwartz5! \n\n:white_check_mark: We can confirm we have a CLA on file for you.\n",
-                "## Summary\r\n\r\nExtracts scene-graph traversal, instance transform computation, and GPU buffer readback logic from `pickModel.js` into reusable static methods on `ModelReader`, then rewrites `pickModel`",
-                "Thank you for the pull request, @alarkbentley! \n\n:white_check_mark: We can confirm we have a CLA on file for you.\n",
-                "@mzschwartz5 @javagl Any chance we get get this merged before the 1.141 cut-off? (which I assume is this week)",
-                "Sandcastle does not show which example is currently open anywhere in the UI.",
-                "This was also mentioned in https://github.com/CesiumGS/cesium/issues/12857#issuecomment-4161139337 \nA different sandcastle, but still. \n(One could close this as a duplicate, or consider it as \"trackin"
+                "Fixes #7196\n\nAdds `cache: 'npm'` to the `setup-node` actions in both the lint and test jobs, allowing GitHub Actions to cache `node_modules` between runs and reduce install time on repeated builds.\n\nC",
+                "1. Why is 2780bca881bd7df2ea65da2abb5b91d65fc20029 here? Any reason other than the inability of some \"agents\" to properly use branches? (I've noticed this pattern in multiple AI-generated PRs)\r\n2. `ac",
+                "I was exploring the CI workflow as part of my university project on GitHub Actions and noticed that the setup-node step doesn't currently include dependency caching.\n\nThe current setup-node step looks",
+                "I looked at the history and caching is not mentioned anywhere in #5599, which reworked the CI. The older Appveyor CI did [cache `node_modules`](https://github.com/expressjs/express/blob/c96c690dc087d1",
+                "I guess I found out why we don't use cache for CI. Express does not have a `package-lock.json`[^1] (https://github.com/expressjs/express/issues/4619, https://github.com/expressjs/express/issues/3963#i",
+                "Fixes #6941\n\nPreviously, `res.redirect(undefined)` would silently send a malformed `Location: undefined` header while only printing a deprecation warning. The HTTP response would contain an invalid Lo",
+                "Duplicate of #6404",
+                "Good morning everyone =)\n\nCurrently, Express is widely used by applications of various sizes and purposes, serving as the foundation for numerous critical web services. However, a common challenge in ",
+                "Thanks for taking the time to write this up! It's an interesting proposal. I'm inclined to think that this is out of scope for an intentionally-minimalist project like Express, and is better handled b",
+                "I fully agree that using a load balancer, such as Nginx, in front of the application is the best practice. This remains an effective solution, but in scenarios involving DDoS attacks or massive traffi",
+                "I just tested Express locally with Node.js 26 and the tests won't even run, because of https://github.com/nodejs/node/pull/62083 breaking the old version of `yargs` (https://github.com/nodejs/node/pul",
+                "@krzysdz Should I upgrade `mocha` and `yargs`"
             ],
-            "comentarios_toxicos": false
+            "readme_content": "[![Express Logo](https://i.cloudup.com/zfY6lL7eFa-3000x3000.png)](https://expressjs.com/)\n\n**Fast, unopinionated, minimalist web framework for [Node.js](https://nodejs.org).**\n\n**This project has a [Code of Conduct].**\n\n## Table of contents\n\n- [Table of contents](#table-of-contents)\n- [Installation](#installation)\n- [Features](#features)\n- [Docs \\& Community](#docs--community)\n- [Quick Start](#quick-start)\n- [Philosophy](#philosophy)\n- [Examples](#examples)\n- [Contributing](#contributing)\n  - [Security Issues](#security-issues)\n  - [Running Tests](#running-tests)\n- [Current project team members](#current-project-team-members)\n  - [TC (Technical Committee)](#tc-technical-committee)\n    - [TC emeriti members](#tc-emeriti-members)\n  - [Triagers](#triagers)\n    - [Emeritus Triagers](#emeritus-triagers)\n- [License](#license)\n\n\n[![NPM Version][npm-version-image]][npm-url]\n[![NPM Downloads][npm-downloads-image]][npm-downloads-url]\n[![Linux Build][github-actions-ci-image]][github-actions-ci-url]\n[![Test Coverage][coveralls-image]][coveralls-url]\n[![OpenSSF Scorecard Badge][ossf-scorecard-badge]][ossf-scorecard-visualizer]\n\n\n```js\nimport express from 'express'\n\nconst app = express()\n\napp.get('/', (req, res) => {\n  res.send('Hello World')\n})\n\napp.listen(3000, () => {\n  console.log('Server is running on http://localhost:3000')\n})\n```\n\n## Installation\n\nThis is a [Node.js](https://nodejs.org/en/) module available through the\n[npm registry](https://www.npmjs.com/).\n\nBefore installing, [download and install Node.js](https://nodejs.org/en/download/).\nNode.js 18 or higher is required.\n\nIf this is a brand new project, make sure to create a `package.json` first with\nthe [`npm init` command](https://docs.npmjs.com/creating-a-package-json-file).\n\nInstallation is done using the\n[`npm install` command](https://docs.npmjs.com/downloading-and-installing-packages-locally):\n\n```bash\nnpm install express\n```\n\nFollow [our installing guide](https://expressjs.com/en/starter/installing.html)\nfor more information.\n\n## Features\n\n  * Robust routing\n  * Focus on high performance\n  * Super-high test coverage\n  * HTTP helpers (redirection, caching, etc)\n  * View system supporting 14+ template engines\n  * Content negotiation\n  * Executable for generating applications quickly\n\n## Docs & Community\n\n  * [Website and Documentation](https://expressjs.com/) - [[website repo](https://github.com/expressjs/expressjs.com)]\n  * [GitHub Organization](https://github.com/expressjs) for Official Middleware & Modules\n  * [Github Discussions](https://github.com/expressjs/discussions) for discussion on the development and usage of Express\n\n**PROTIP** Be sure to read the [migration guide to v5](https://expressjs.com/en/guide/migrating-5)\n\n## Quick Start\n\n  The quickest way to get started with express is to utilize the executable [`express(1)`](https://github.com/expressjs/generator) to generate an application as shown below:\n\n  Install the executable. The executable's major version will match Express's:\n\n```bash\nnpm install -g express-generator@4\n```\n\n  Create the app:\n\n```bash\nexpress /tmp/foo && cd /tmp/foo\n```\n\n  Install dependencies:\n\n```bash\nnpm install\n```\n\n  Start the server:\n\n```bash\nnpm start\n```\n\n  View the website at: http://localhost:3000\n\n## Philosophy\n\n  The Express philosophy is to provide small, robust tooling for HTTP servers, making\n  it a great solution for single page applications, websites, hybrids, or public\n  HTTP APIs.\n\n  Express does not force you to use any specific ORM or template engine. With support for over\n  14 template engines via [@ladjs/consolidate](https://github.com/ladjs/consolidate),\n  you can quickly craft your perfect framework.\n\n## Examples\n\n  To view the examples, clone the Express repository:\n\n```bash\ngit clone https://github.com/expressjs/express.git --depth 1 && cd express\n```\n\n  Then install the dependencies:\n\n```bash\nnpm install\n```\n\n  Then run whichever example you want:\n\n```bash\nnode examples/content-negotiation\n```\n\n## Contributing\n\nThe Express.js project welcomes all constructive contributions. Contributions take many forms,\nfrom code for bug fixes and enhancements, to additions and fixes to documentation, additional\ntests, triaging incoming pull requests and issues, and more!\n\nSee the [Contributing Guide] for more technical details on contributing.\n\n### Security Issues\n\nIf you discover a security vulnerability in Express, please see [Security Policies and Procedures](https://github.com/expressjs/express/security/policy).\n\n### Running Tests\n\nTo run the test suite, first install the dependencies:\n\n```bash\nnpm install\n```\n\nThen run `npm test`:\n\n```bash\nnpm test\n```\n\n## Current project team members\n\nFor information about the governance of the express.js project, see [GOVERNANCE.md](https://github.com/expressjs/discussions/blob/HEAD/docs/GOVERNANCE.md).\n\nThe original author of Express is [TJ Holowaychuk](https://github.com/tj)\n\n[List of all contributors](https://github.com/expressjs/express/graphs/contributors)\n\n### TC (Technical Committee)\n\n* [UlisesGascon](https://github.com/UlisesGascon) - **Ulises Gascón** (he/him)\n* [jonchurch](https://github.com/jonchurch) - **Jon Church**\n* [wesleytodd](https://github.com/wesleytodd) - **Wes Todd**\n* [LinusU](https://github.com/LinusU) - **Linus Unnebäck**\n* [blakeembrey](https://github.com/blakeembrey) - **Blake Embrey**\n* [sheplu](https://github.com/sheplu) - **Jean Burellier**\n* [crandmck](https://github.com/crandmck) - **Rand McKinney**\n* [ctcpip](https://github.com/ctcpip) - **Chris de Almeida**\n\n<details>\n<summary>TC emeriti members</summary>\n\n#### TC emeriti members\n\n  * [dougwilson](https://github.com/dougwilson) - **Douglas Wilson**\n  * [hacksparrow](https://github.com/hacksparrow) - **Hage Yaapa**\n  * [jonathanong](https://github.com/jonathanong) - **jongleberry**\n  * [niftylettuce](https://github.com/niftylettuce) - **niftylettuce**\n  * [troygoode](https://github.com/troygoode) - **Troy Goode**\n</details>\n\n\n### Triagers\n\n* [aravindvnair99](https://github.com/aravindvnair99) - **Aravind Nair**\n* [bjohansebas](https://github.com/bjohansebas) - **Sebastian Beltran**\n* [carpasse](https://github.com/carpasse) - **Carlos Serrano**\n* [CBID2](https://github.com/CBID2) - **Christine Belzie**\n* [UlisesGascon](https://github.com/UlisesGascon) - **Ulises Gascón** (he/him)\n* [IamLizu](https://github.com/IamLizu) - **S M Mahmudul Hasan** (he/him)\n* [Phillip9587](https://github.com/Phillip9587) - **Phillip Barta**\n* [efekrskl](https://github.com/efekrskl) - **Efe Karasakal**\n* [rxmarbles](https://github.com/rxmarbles) - **Rick Markins** (he/him)\n* [krzysdz](https://github.com/krzysdz)\n* [GroophyLifefor](https://github.com/GroophyLifefor) - **Murat Kirazkaya**\n\n<details>\n<summary>Triagers emeriti members</summary>\n\n#### Emeritus Triagers\n\n  * [AuggieH](https://github.com/AuggieH) - **Auggie Hudak**\n  * [G-Rath](https://github.com/G-Rath) - **Gareth Jones**\n  * [MohammadXroid](https://github.com/MohammadXroid) - **Mohammad Ayashi**\n  * [NawafSwe](https://github.com/NawafSwe) - **Nawaf Alsharqi**\n  * [NotMoni](https://github.com/NotMoni) - **Moni**\n  * [VigneshMurugan](https://github.com/VigneshMurugan) - **Vignesh Murugan**\n  * [davidmashe](https://github.com/davidmashe) - **David Ashe**\n  * [digitaIfabric](https://github.com/digitaIfabric) - **David**\n  * [e-l-i-s-e](https://github.com/e-l-i-s-e) - **Elise Bonner**\n  * [fed135](https://github.com/fed135) - **Frederic Charette**\n  * [firmanJS](https://github.com/firmanJS) - **Firman Abdul Hakim**\n  * [getspooky](https://github.com/getspooky) - **Yasser Ameur**\n  * [ghinks](https://github.com/ghinks) - **Glenn**\n  * [ghousemohamed](https://github.com/ghousemohamed) - **Ghouse Mohamed**\n  * [gireeshpunathil](https://github.com/gireeshpunathil) - **Gireesh Punathil**\n  * [jake32321](https://github.com/jake32321) - **Jake Reed**\n  * [jonchurch](https://github.com/jonchurch) - **Jon Church**\n  * [lekanikotun](https://github.com/lekanikotun) - **Troy Goode**\n  * [marsonya](https://github.com/marsonya) - **Lekan Ikotun**\n  * [mastermatt](https://github.com/mastermatt) - **Matt R. Wilson**\n  * [maxakuru](https://github.com/maxakuru) - **Max Edell**\n  * [mlrawlings](https://github.com/mlrawlings) - **Michael Rawlings**\n  * [rodion-arr](https://github.com/rodion-arr) - **Rodion Abdurakhimov**\n  * [sheplu](https://github.com/sheplu) - **Jean Burellier**\n  * [tarunyadav1](https://github.com/tarunyadav1) - **Tarun yadav**\n  * [tunniclm](https://github.com/tunniclm) - **Mike Tunnicliffe**\n  * [enyoghasim](https://github.com/enyoghasim) - **David Enyoghasim**\n  * [0ss](https://github.com/0ss) - **Salah**\n  * [ejcheng](https://github.com/ejcheng)- **Eric Cheng** (he/him)\n  * [dakshkhetan](https://github.com/dakshkhetan) - **Daksh Khetan** (he/him)\n  * [lucasraziel](https://github.com/lucasraziel) - **Lucas Soares Do Rego**\n  * [mertcanaltin](https://github.com/mertcanaltin) - **Mert Can Altin**\n  * [dpopp07](https://github.com/dpopp07) - **Dustin Popp**\n  * [Sushmeet](https://github.com/Sushmeet) - **Sushmeet Sunger**\n  * [3imed-jaberi](https://github.com/3imed-jaberi) - **Imed Jaberi**\n\n</details>\n\n\n## License\n\n  [MIT](LICENSE)\n\n[coveralls-image]: https://img.shields.io/coverallsCoverage/github/expressjs/express?branch=master\n[coveralls-url]: https://coveralls.io/r/expressjs/express?branch=master\n[github-actions-ci-image]: https://img.shields.io/github/actions/workflow/status/expressjs/express/ci.yml?branch=master&label=ci\n[github-actions-ci-url]: https://github.com/expressjs/express/actions/workflows/ci.yml\n[npm-downloads-image]: https://img.shields.io/npm/dm/express\n[npm-downloads-url]: https://npmcharts.com/compare/express?minimal=true\n[npm-url]: https://npmjs.org/package/express\n[npm-version-image]: https://img.shields.io/npm/v/express\n[ossf-scorecard-badge]: https://api.scorecard.dev/projects/github.com/expressjs/express/badge\n[ossf-scorecard-visualizer]: https://ossf.github.io/scorecard-visualizer/#/projects/github.com/expressjs/express\n[Code of Conduct]: https://github.com/expressjs/.github/blob/HEAD/CODE_OF_CONDUCT.md\n[Contributing Guide]: https://github.com/expressjs/.github/blob/HEAD/CONTRIBUTING.md\n",
+            "contributing_content": "",
+            "coc_content": "",
+            "comentarios_toxicos": false,
+            "comunidad_estancada": false
         }
     },
-    "https://github.com/cloudflare/cloudflare-docs": {
-        "timestamp": 1777370017.31412,
+    "https://github.com/psf/requests": {
+        "timestamp": 1778153060.6033912,
+        "data": {
+            "dias_inactividad": 2,
+            "falta_docs": false,
+            "estrellas": 53965,
+            "issues_abiertas": 228,
+            "forks": 9896,
+            "lenguaje": "Python",
+            "prs_abiertas": 82,
+            "pr_avg_age_days": 110.23333333333333,
+            "pr_old_ratio": 0.16666666666666666,
+            "contribuyentes": 403,
+            "tiene_licencia": true,
+            "descripcion": "A simple, yet elegant, HTTP library.",
+            "rate_limit_info": "4988/5000",
+            "ultimos_commits": [
+                "2026-05-04: Bump https://github.com/astral-sh/ruff-pre-commit ",
+                "2026-05-03: v2.34.0.dev1",
+                "2026-05-03: Add inline types to Requests (#7272)"
+            ],
+            "comentarios_recientes": [
+                "When HTTPDigestAuth credentials are passed as bytes (e.g. encoded UTF-8), they were being used directly in the digest header without decoding, resulting in headers like `Digest username=\"b'Ond\\xc5\\x99",
+                "Hi @mitre88,\r\n\r\nI don't believe this is the right fix. It's broken for `latin-1` which is our standard assumption for bytes input. There are other open PRs that already address this so we'll close thi",
+                "## Summary\n\nFixes #4965\n\nWhen accessing `response.content` raises an exception during stream reading (e.g., `ConnectionError`), subsequent accesses would silently return an empty bytestring `b\"\"` inst"
+            ],
+            "readme_content": "# Requests\n\n[![Version](https://img.shields.io/pypi/v/requests.svg?maxAge=86400)](https://pypi.org/project/requests/)\n[![Supported Versions](https://img.shields.io/pypi/pyversions/requests.svg)](https://pypi.org/project/requests)\n[![Downloads](https://static.pepy.tech/badge/requests/month)](https://pepy.tech/project/requests)\n[![Contributors](https://img.shields.io/github/contributors/psf/requests.svg)](https://github.com/psf/requests/graphs/contributors)\n[![Documentation](https://readthedocs.org/projects/requests/badge/?version=latest)](https://requests.readthedocs.io)\n\n**Requests** is a simple, yet elegant, HTTP library.\n\n```python\n>>> import requests\n>>> r = requests.get('https://httpbin.org/basic-auth/user/pass', auth=('user', 'pass'))\n>>> r.status_code\n200\n>>> r.headers['content-type']\n'application/json; charset=utf8'\n>>> r.encoding\n'utf-8'\n>>> r.text\n'{\"authenticated\": true, ...'\n>>> r.json()\n{'authenticated': True, ...}\n```\n\nRequests allows you to send HTTP/1.1 requests extremely easily. There’s no need to manually add query strings to your URLs, or to form-encode your `PUT` & `POST` data — but nowadays, just use the `json` method!\n\nRequests is one of the most downloaded Python packages today, pulling in around `300M downloads / week` — according to GitHub, Requests is currently [depended upon](https://github.com/psf/requests/network/dependents?package_id=UGFja2FnZS01NzA4OTExNg%3D%3D) by `4,000,000+` repositories.\n\n## Installing Requests and Supported Versions\n\nRequests is available on PyPI:\n\n```console\n$ python -m pip install requests\n```\n\nRequests officially supports Python 3.10+.\n\n## Supported Features & Best–Practices\n\nRequests is ready for the demands of building robust and reliable HTTP–speaking applications, for the needs of today.\n\n- Keep-Alive & Connection Pooling\n- International Domains and URLs\n- Sessions with Cookie Persistence\n- Browser-style TLS/SSL Verification\n- Basic & Digest Authentication\n- Familiar `dict`–like Cookies\n- Automatic Content Decompression and Decoding\n- Multi-part File Uploads\n- SOCKS Proxy Support\n- Connection Timeouts\n- Streaming Downloads\n- Automatic honoring of `.netrc`\n- Chunked HTTP Requests\n\n## Cloning the repository\n\nWhen cloning the Requests repository, you may need to add the `-c\nfetch.fsck.badTimezone=ignore` flag to avoid an error about a bad commit timestamp (see\n[this issue](https://github.com/psf/requests/issues/2690) for more background):\n\n```shell\ngit clone -c fetch.fsck.badTimezone=ignore https://github.com/psf/requests.git\n```\n\nYou can also apply this setting to your global Git config:\n\n```shell\ngit config --global fetch.fsck.badTimezone ignore\n```\n\n---\n\n[![Kenneth Reitz](https://raw.githubusercontent.com/psf/requests/main/ext/kr.png)](https://kennethreitz.org) [![Python Software Foundation](https://raw.githubusercontent.com/psf/requests/main/ext/psf.png)](https://www.python.org/psf)\n",
+            "contributing_content": "",
+            "coc_content": "",
+            "comentarios_toxicos": false,
+            "comunidad_estancada": false
+        }
+    },
+    "https://github.com/pyinstaller/pyinstaller": {
+        "timestamp": 1778153168.3719862,
+        "data": {
+            "dias_inactividad": 10,
+            "falta_docs": false,
+            "estrellas": 12975,
+            "issues_abiertas": 288,
+            "forks": 2017,
+            "lenguaje": "Python",
+            "prs_abiertas": 17,
+            "pr_avg_age_days": 1753.1764705882354,
+            "pr_old_ratio": 1.0,
+            "contribuyentes": 390,
+            "tiene_licencia": true,
+            "descripcion": "Freeze (package) Python programs into stand-alone executables",
+            "rate_limit_info": "4984/5000",
+            "ultimos_commits": [
+                "2026-04-26: Prevent import webbrowser from including libobjc.s",
+                "2026-04-26: Tests: Requirements: Scheduled weekly dependency u",
+                "2026-04-09: doc: document the issue with feathered edges in sp"
+            ],
+            "comentarios_recientes": [
+                "<!--\nWelcome to the PyInstaller issue tracker! Before creating an issue, please heed the following:\n\n1. This tracker should only be used to report bugs and request features / enhancements to PyInstall"
+            ],
+            "readme_content": "PyInstaller Overview\n====================\n\n.. image:: https://img.shields.io/pypi/v/pyinstaller\n   :alt: PyPI\n   :target: https://pypi.org/project/pyinstaller\n.. image:: https://img.shields.io/pypi/pyversions/pyinstaller\n   :alt: PyPI - Python Version\n   :target: https://pypi.org/project/pyinstaller\n.. image:: https://img.shields.io/readthedocs/pyinstaller/stable\n   :alt: Read the Docs (version)\n   :target: https://pyinstaller.org\n.. image:: https://img.shields.io/pypi/dm/pyinstaller\n   :alt: PyPI - Downloads\n   :target: https://pypistats.org/packages/pyinstaller\n\n\nPyInstaller bundles a Python application and all its dependencies into a single\npackage. The user can run the packaged app without installing a Python\ninterpreter or any modules.\n\n:Documentation: https://pyinstaller.org/\n:Code:          https://github.com/pyinstaller/pyinstaller\n\nPyInstaller reads a Python script written by you. It analyzes your code\nto discover every other module and library your script needs in order to\nexecute. Then it collects copies of all those files -- including the active\nPython interpreter! -- and puts them with your script in a single folder, or\noptionally in a single executable file.\n\n\nPyInstaller is tested against Windows, macOS, and GNU/Linux.\nHowever, it is not a cross-compiler:\nto make a Windows app you run PyInstaller in Windows; to make\na GNU/Linux app you run it in GNU/Linux, etc.\nPyInstaller has been used successfully\nwith AIX, Solaris, FreeBSD and OpenBSD,\nbut is not tested against them as part of the continuous integration tests.\n\n\nMain Advantages\n---------------\n\n- Works out-of-the-box with any Python version 3.8-3.14.\n- Fully multi-platform, and uses the OS support to load the dynamic libraries,\n  thus ensuring full compatibility.\n- Correctly bundles the major Python packages such as numpy, PyQt5,\n  PySide2, PyQt6, PySide6, wxPython, matplotlib and others out-of-the-box.\n- Compatible with many third-party packages out-of-the-box. (All the required\n  tricks to make external packages work are already integrated.)\n- Works with code signing on macOS.\n- Bundles MS Visual C++ DLLs on Windows.\n\n\nInstallation\n------------\n\nPyInstaller is available on PyPI. You can install it through `pip`:\n\n.. code:: bash\n\n      pip install pyinstaller\n\n\nRequirements and Tested Platforms\n---------------------------------\n\n- Python:\n    - 3.8-3.14. Note that Python 3.10.0 contains a bug making it unsupportable by\n      PyInstaller. PyInstaller will also not work with beta releases of Python\n      3.15.\n- Windows (32-bit/64-bit/ARM64):\n    - PyInstaller should work on Windows 7 or newer, but we only officially support Windows 8+.\n    - Support for Python installed from the Windows Store without using virtual\n      environments requires PyInstaller 4.4 or later.\n- Linux:\n    - GNU libc based distributions on architectures ``x86_64``, ``aarch64``,\n      ``i686``, ``ppc64le``, ``s390x``.\n    - musl libc based distributions on architectures ``x86_64``, ``aarch64``.\n    - ldd: Console application to print the shared libraries required\n      by each program or shared library. This typically can be found in\n      the distribution package `glibc` or `libc-bin`.\n    - objdump: Console application to display information from\n      object files. This typically can be found in the\n      distribution package `binutils`.\n    - objcopy: Console application to copy and translate object files.\n      This typically can be found in the distribution package `binutils`,\n      too.\n    - Raspberry Pi users on ``armv5``-``armv7`` should `add piwheels as an extra\n      index URL <https://www.piwheels.org/>`_ then ``pip install pyinstaller``\n      as usual.\n- macOS (``x86_64`` or ``arm64``):\n    - macOS 10.15 (Catalina) or newer.\n    - Supports building ``universal2`` applications provided that your installation\n      of Python and all your dependencies are also compiled ``universal2``.\n\n\nUsage\n-----\n\nBasic usage is very simple - just run it against your main script:\n\n.. code:: bash\n\n      pyinstaller /path/to/yourscript.py\n\nFor more details, see the `manual`_.\n\n\nUntested Platforms\n------------------\n\nThe following platforms have been contributed, and any feedback or\nenhancements on these are welcome.\n\n- FreeBSD\n    - ldd\n- Solaris\n    - ldd\n    - objdump\n- AIX\n    - AIX 6.1 or newer. PyInstaller will not work with statically\n      linked Python libraries.\n    - ldd\n- Linux on any other libc implementation/architecture combination not listed\n  above.\n\nBefore using any contributed platform, you need to build the PyInstaller\nbootloader. This will happen automatically when you ``pip install pyinstaller``\nprovided that you have an appropriate C compiler (typically\neither ``gcc`` or ``clang``) and zlib's development headers already installed.\n\n\nSupport\n-------\n\n- Official debugging guide: https://pyinstaller.org/en/v6.20.0/when-things-go-wrong.html\n- Assorted user contributed help topics: https://github.com/pyinstaller/pyinstaller/wiki\n- Web based Q&A forums: https://github.com/pyinstaller/pyinstaller/discussions\n- Email based Q&A forums: https://groups.google.com/g/pyinstaller\n\n\nChanges in this Release\n-----------------------\n\nYou can find a detailed list of changes in this release\nin the `Changelog`_ section of the manual.\n\n.. _`manual`: https://pyinstaller.org/en/v6.20.0/\n.. _`Changelog`: https://pyinstaller.org/en/v6.20.0/CHANGES.html\n",
+            "contributing_content": "",
+            "coc_content": "",
+            "comentarios_toxicos": false,
+            "comunidad_estancada": false
+        }
+    },
+    "https://github.com/microsoft/vscode": {
+        "timestamp": 1778153356.513462,
         "data": {
             "dias_inactividad": 0,
             "falta_docs": false,
-            "estrellas": 4666,
-            "issues_abiertas": 247,
-            "forks": 13942,
-            "lenguaje": "MDX",
-            "prs_abiertas": 148,
-            "contribuyentes": 444,
+            "estrellas": 184636,
+            "issues_abiertas": 17308,
+            "forks": 39679,
+            "lenguaje": "TypeScript",
+            "prs_abiertas": 1897,
+            "pr_avg_age_days": 0.0,
+            "pr_old_ratio": 0.0,
+            "contribuyentes": 325,
             "tiene_licencia": true,
-            "descripcion": "Cloudflare’s documentation",
-            "rate_limit_info": "4996/5000",
+            "descripcion": "Visual Studio Code",
+            "rate_limit_info": "4980/5000",
             "ultimos_commits": [
-                "2026-04-28: Document CLOUDFLARE_CF_FETCH_ENABLED and CLOUDFLAR",
-                "2026-04-28: docs(wrangler/deprecations): 'wrangler deploy' -> ",
-                "2026-04-28: [Keyless SSL] Update supported OSs, repo URL, and "
+                "2026-05-07: Merge pull request #314978 from microsoft/benibenj",
+                "2026-05-07: Adds missing getVendors mock",
+                "2026-05-07: Fail CI if a component fixture throws & enable nod"
             ],
             "comentarios_recientes": [
-                "Specify that Custom Hostname CA selection for enterprise customers only\r\nPCX-21137\r\n"
+                "<!-- ⚠️⚠️ Do Not Delete This! bug_report_template ⚠️⚠️ -->\n<!-- Please read our Rules of Conduct: https://opensource.microsoft.com/codeofconduct/ -->\n<!-- 🕮 Read our guide about submitting issues: htt",
+                "Thanks for creating this issue! We figured it's missing some basic information or in some other way doesn't follow our [issue reporting guidelines](https://aka.ms/vscodeissuereporting). Please take th",
+                "can you tell me how i can provide more information?",
+                "<!-- ⚠️⚠️ Do Not Delete This! feature_request_template ⚠️⚠️ -->\n<!-- Please read our Rules of Conduct: https://opensource.microsoft.com/codeofconduct/ -->\n<!-- Please search existing issues to avoid c"
             ],
-            "comentarios_toxicos": false
+            "readme_content": "# Visual Studio Code - Open Source (\"Code - OSS\")\n[![Feature Requests](https://img.shields.io/github/issues/microsoft/vscode/feature-request.svg)](https://github.com/microsoft/vscode/issues?q=is%3Aopen+is%3Aissue+label%3Afeature-request+sort%3Areactions-%2B1-desc)\n[![Bugs](https://img.shields.io/github/issues/microsoft/vscode/bug.svg)](https://github.com/microsoft/vscode/issues?utf8=✓&q=is%3Aissue+is%3Aopen+label%3Abug)\n[![Gitter](https://img.shields.io/badge/chat-on%20gitter-yellow.svg)](https://gitter.im/Microsoft/vscode)\n\n## The Repository\n\nThis repository (\"`Code - OSS`\") is where we (Microsoft) develop the [Visual Studio Code](https://code.visualstudio.com) product together with the community. Not only do we work on code and issues here, but we also publish our [roadmap](https://github.com/microsoft/vscode/wiki/Roadmap), [monthly iteration plans](https://github.com/microsoft/vscode/wiki/Iteration-Plans), and our [endgame plans](https://github.com/microsoft/vscode/wiki/Running-the-Endgame). This source code is available to everyone under the standard [MIT license](https://github.com/microsoft/vscode/blob/main/LICENSE.txt).\n\n## Visual Studio Code\n\n<p align=\"center\">\n  <img alt=\"VS Code in action\" src=\"https://user-images.githubusercontent.com/35271042/118224532-3842c400-b438-11eb-923d-a5f66fa6785a.png\">\n</p>\n\n[Visual Studio Code](https://code.visualstudio.com) is a distribution of the `Code - OSS` repository with Microsoft-specific customizations released under a traditional [Microsoft product license](https://code.visualstudio.com/License/).\n\n[Visual Studio Code](https://code.visualstudio.com) combines the simplicity of a code editor with what developers need for their core edit-build-debug cycle. It provides comprehensive code editing, navigation, and understanding support along with lightweight debugging, a rich extensibility model, and lightweight integration with existing tools.\n\nVisual Studio Code is updated monthly with new features and bug fixes. You can download it for Windows, macOS, and Linux on [Visual Studio Code's website](https://code.visualstudio.com/Download). To get the latest releases every day, install the [Insiders build](https://code.visualstudio.com/insiders).\n\n## Contributing\n\nThere are many ways in which you can participate in this project, for example:\n\n* [Submit bugs and feature requests](https://github.com/microsoft/vscode/issues), and help us verify as they are checked in\n* Review [source code changes](https://github.com/microsoft/vscode/pulls)\n* Review the [documentation](https://github.com/microsoft/vscode-docs) and make pull requests for anything from typos to and new content.\n\nIf you are interested in fixing issues and contributing directly to the code base,\nplease see the document [How to Contribute](https://github.com/microsoft/vscode/wiki/How-to-Contribute), which covers the following:\n\n* [How to build and run from source](https://github.com/microsoft/vscode/wiki/How-to-Contribute)\n* [The development workflow, including debugging and running tests](https://github.com/microsoft/vscode/wiki/How-to-Contribute#debugging)\n* [Coding guidelines](https://github.com/microsoft/vscode/wiki/Coding-Guidelines)\n* [Submitting pull requests](https://github.com/microsoft/vscode/wiki/How-to-Contribute#pull-requests)\n* [Finding an issue to work on](https://github.com/microsoft/vscode/wiki/How-to-Contribute#where-to-contribute)\n* [Contributing to translations](https://aka.ms/vscodeloc)\n\n## Feedback\n\n* Ask a question on [Stack Overflow](https://stackoverflow.com/questions/tagged/vscode)\n* [Request a new feature](CONTRIBUTING.md)\n* Upvote [popular feature requests](https://github.com/microsoft/vscode/issues?q=is%3Aopen+is%3Aissue+label%3Afeature-request+sort%3Areactions-%2B1-desc)\n* [File an issue](https://github.com/microsoft/vscode/issues)\n* Connect with the extension author community on [GitHub Discussions](https://github.com/microsoft/vscode-discussions/discussions) or [Slack](https://aka.ms/vscode-dev-community)\n* Follow [@code](https://x.com/code) and let us know what you think!\n\nSee our [wiki](https://github.com/microsoft/vscode/wiki/Feedback-Channels) for a description of each of these channels and information on some other available community-driven channels.\n\n## Related Projects\n\nMany of the core components and extensions to VS Code live in their own repositories on GitHub. For example, the [node debug adapter](https://github.com/microsoft/vscode-node-debug) and the [mono debug adapter](https://github.com/microsoft/vscode-mono-debug) repositories are separate from each other. For a complete list, please visit the [Related Projects](https://github.com/microsoft/vscode/wiki/Related-Projects) page on our [wiki](https://github.com/microsoft/vscode/wiki).\n\n## Bundled Extensions\n\nVS Code includes a set of built-in extensions located in the [extensions](extensions) folder, including grammars and snippets for many languages. Extensions that provide rich language support (inline suggestions, Go to Definition) for a language have the suffix `language-features`. For example, the `json` extension provides coloring for `JSON` and the `json-language-features` extension provides rich language support for `JSON`.\n\n## Development Container\n\nThis repository includes a Visual Studio Code Dev Containers / GitHub Codespaces development container.\n\n* For [Dev Containers](https://aka.ms/vscode-remote/download/containers), use the **Dev Containers: Clone Repository in Container Volume...** command which creates a Docker volume for better disk I/O on macOS and Windows.\n  * If you already have VS Code and Docker installed, you can also click [here](https://vscode.dev/redirect?url=vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=https://github.com/microsoft/vscode) to get started. This will cause VS Code to automatically install the Dev Containers extension if needed, clone the source code into a container volume, and spin up a dev container for use.\n\n* For Codespaces, install the [GitHub Codespaces](https://marketplace.visualstudio.com/items?itemName=GitHub.codespaces) extension in VS Code, and use the **Codespaces: Create New Codespace** command.\n\nDocker / the Codespace should have at least **4 cores and 6 GB of RAM (8 GB recommended)** to run a full build. See the [development container README](.devcontainer/README.md) for more information.\n\n## Code of Conduct\n\nThis project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.\n\n## License\n\nCopyright (c) Microsoft Corporation. All rights reserved.\n\nLicensed under the [MIT](LICENSE.txt) license.\n",
+            "contributing_content": "# Contributing to VS Code\n\nWelcome, and thank you for your interest in contributing to VS Code!\n\nThere are several ways in which you can contribute, beyond writing code. The goal of this document is to provide a high-level overview of how you can get involved.\n\n## Asking Questions\n\n\nHave a question? Instead of opening an issue, please ask on [Stack Overflow](https://stackoverflow.com/questions/tagged/visual-studio-code) using the tag `visual-studio-code`.\n\nThe active community will be eager to assist you. Your well-worded question will serve as a resource to others searching for help.\n\n## Providing Feedback\n\nYour comments and feedback are welcome, and the development team is available via a handful of different channels.\n\nSee the [Feedback Channels](https://github.com/microsoft/vscode/wiki/Feedback-Channels) wiki page for details on how to share your thoughts.\n\n## Reporting Issues\n\nHave you identified a reproducible problem in VS Code? Do you have a feature request? We want to hear about it! Here's how you can report your issue as effectively as possible.\n\n### Identify Where to Report\n\nThe VS Code project is distributed across multiple repositories. Try to file the issue against the correct repository. Check the list of [Related Projects](https://github.com/microsoft/vscode/wiki/Related-Projects) if you aren't sure which repo is correct.\n\nCan you recreate the issue even after [disabling all extensions](https://code.visualstudio.com/docs/editor/extension-gallery#_disable-an-extension)? If you find the issue is caused by an extension you have installed, please file an issue on the extension's repo directly.\n\n### Look For an Existing Issue\n\nBefore you create a new issue, please do a search in [open issues](https://github.com/microsoft/vscode/issues) to see if the issue or feature request has already been filed.\n\nBe sure to scan through the [most popular](https://github.com/microsoft/vscode/issues?q=is%3Aopen+is%3Aissue+label%3Afeature-request+sort%3Areactions-%2B1-desc) feature requests.\n\nIf you find your issue already exists, make relevant comments and add your [reaction](https://github.com/blog/2119-add-reactions-to-pull-requests-issues-and-comments). Use a reaction in place of a \"+1\" comment:\n\n* 👍 - upvote\n* 👎 - downvote\n\nIf you cannot find an existing issue that describes your bug or feature, create a new issue using the guidelines below.\n\n### Writing Good Bug Reports and Feature Requests\n\nFile a single issue per problem and feature request. Do not enumerate multiple bugs or feature requests in the same issue.\n\nDo not add your issue as a comment to an existing issue unless it's for the identical input. Many issues look similar but have different causes.\n\nThe more information you can provide, the more likely someone will be successful at reproducing the issue and finding a fix.\n\nThe built-in tool for reporting an issue, which you can access by using `Report Issue` in VS Code's Help menu, can help streamline this process by automatically providing the version of VS Code, all your installed extensions, and your system info. Additionally, the tool will search among existing issues to see if a similar issue already exists.\n\nPlease include the following with each issue:\n\n* Version of VS Code\n* Your operating system\n* List of extensions that you have installed\n* Reproducible steps (1... 2... 3...) that cause the issue\n* What you expected to see, versus what you actually saw\n* Images, animations, or a link to a video showing the issue occurring\n* A code snippet that demonstrates the issue or a link to a code repository the developers can easily pull down to recreate the issue locally\n  * **Note:** Because the developers need to copy and paste the code snippet, including a code snippet as a media file (i.e. .gif) is not sufficient.\n* Errors from the Dev Tools Console (open from the menu: Help > Toggle Developer Tools)\n\n### Creating Pull Requests\n\n* Please refer to the article on [creating pull requests](https://github.com/microsoft/vscode/wiki/How-to-Contribute#pull-requests) and contributing to this project.\n\n### Final Checklist\n\nPlease remember to do the following:\n\n* [ ] Search the issue repository to ensure your report is a new issue\n* [ ] Recreate the issue after disabling all extensions\n* [ ] Simplify your code around the issue to better isolate the problem\n\nDon't feel bad if the developers can't reproduce the issue right away. They will simply ask for more information!\n\n### Follow Your Issue\n\nOnce submitted, your report will go into the [issue tracking](https://github.com/microsoft/vscode/wiki/Issue-Tracking) workflow. Be sure to understand what will happen next, so you know what to expect and how to continue to assist throughout the process.\n\n## Automated Issue Management\n\nWe use GitHub Actions to help us manage issues. These Actions and their descriptions can be [viewed here](https://github.com/microsoft/vscode-github-triage-actions). Some examples of what these Actions do are:\n\n* Automatically close any issue marked `info-needed` if there has been no response in the past 7 days.\n* Automatically lock issues 45 days after they are closed.\n* Automatically implement the VS Code [feature request pipeline](https://github.com/microsoft/vscode/wiki/Issues-Triaging#managing-feature-requests).\n\nIf you believe the bot got something wrong, please open a new issue and let us know.\n\n## Contributing Fixes\n\nIf you are interested in writing code to fix issues, please see [How to Contribute](https://github.com/microsoft/vscode/wiki/How-to-Contribute) in the wiki.\n\n## Thank You\n\nYour contributions to open source, large or small, make great projects like this possible. Thank you for taking the time to contribute.\n",
+            "coc_content": "",
+            "comentarios_toxicos": false,
+            "comunidad_estancada": false
         }
     }
 }

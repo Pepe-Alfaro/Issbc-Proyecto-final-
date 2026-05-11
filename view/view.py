@@ -73,8 +73,10 @@ class DiagnosticoDialog(QDialog):
         
         self.lbl_diag_texto = QLabel(diagnostico)
         self.lbl_diag_texto.setWordWrap(True)
-        if "CRÍTICO" in diagnostico or "DEFICIENTE" in diagnostico or "OBSOLETO" in diagnostico:
+        if "CRÍTICO" in diagnostico or "OBSOLETO" in diagnostico:
             self.lbl_diag_texto.setStyleSheet("color: #f85149; font-size: 18px; font-weight: bold; padding: 20px; border: 1px solid rgba(248,81,73,0.4); border-radius: 8px; background-color: rgba(248,81,73,0.1);")
+        elif "CUELLO DE BOTELLA" in diagnostico:
+            self.lbl_diag_texto.setStyleSheet("color: #d29922; font-size: 18px; font-weight: bold; padding: 20px; border: 1px solid rgba(210,153,34,0.4); border-radius: 8px; background-color: rgba(210,153,34,0.1);")
         else:
             self.lbl_diag_texto.setStyleSheet("color: #2ea043; font-size: 18px; font-weight: bold; padding: 20px; border: 1px solid rgba(46,160,67,0.4); border-radius: 8px; background-color: rgba(46,160,67,0.1);")
         layout.addWidget(self.lbl_diag_texto)

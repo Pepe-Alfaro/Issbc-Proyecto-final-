@@ -43,6 +43,18 @@ class GitHubService:
                 tiene_readme = False
             falta_docs = not (tiene_wiki or tiene_readme)
 
+            contributing_content = ""
+            try:
+                contributing_content = repo.get_contents("CONTRIBUTING.md").decoded_content.decode('utf-8', errors='ignore')
+            except:
+                pass
+
+            coc_content = ""
+            try:
+                coc_content = repo.get_contents("CODE_OF_CONDUCT.md").decoded_content.decode('utf-8', errors='ignore')
+            except:
+                pass
+
             # 3. Métricas adicionales para CommonKADS (Sugeridas)
             estrellas = repo.stargazers_count
             issues_abiertas = repo.open_issues_count
@@ -50,9 +62,21 @@ class GitHubService:
             lenguaje = repo.language or "No detectado"
 
             # 4. Extracciones que requieren llamadas adicionales a la API (paginadas)
-            # Para evitar exceso de llamadas, usamos totalCount.
+            pr_avg_age_days = 0
+            pr_old_ratio = 0.0
             try:
-                prs_abiertas = repo.get_pulls(state='open').totalCount
+                open_prs = repo.get_pulls(state='open')
+                prs_abiertas = open_prs.totalCount
+                
+                if prs_abiertas > 0:
+                    # Muestreo rápido de las PRs (primeras 30) para calcular inercia
+                    sampled_prs = list(open_prs[:30])
+                    if sampled_prs:
+                        now = datetime.datetime.now(datetime.timezone.utc)
+                        ages = [(now - pr.created_at.replace(tzinfo=datetime.timezone.utc)).days for pr in sampled_prs]
+                        pr_avg_age_days = sum(ages) / len(ages)
+                        old_prs = sum(1 for age in ages if age > 180) # PRs con más de 6 meses
+                        pr_old_ratio = old_prs / len(ages)
             except:
                 prs_abiertas = 0
                 
@@ -108,13 +132,17 @@ class GitHubService:
                 "forks": forks,
                 "lenguaje": lenguaje,
                 "prs_abiertas": prs_abiertas,
+                "pr_avg_age_days": pr_avg_age_days,
+                "pr_old_ratio": pr_old_ratio,
                 "contribuyentes": contribuyentes,
                 "tiene_licencia": tiene_licencia,
                 "descripcion": descripcion,
                 "rate_limit_info": rate_limit_info,
                 "ultimos_commits": ultimos_commits,
                 "comentarios_recientes": comentarios_recientes,
-                "readme_content": readme_content
+                "readme_content": readme_content,
+                "contributing_content": contributing_content,
+                "coc_content": coc_content
             }
         except Exception as e:
             print(f"❌ Error de conexión con GitHub: {e}")
